@@ -13,4 +13,4 @@ GitHub Page feature
 
 # Preview
 
-[![preview website](https://raw.githubusercontent.com/FLo-ABB/ABB_Robotics_Portfolio/main/assets/img/preview.png)](https://flo-abb.github.io/ABB_Robotics_Portfolio/)
+[![preview website](https://raw.githubusercontent.com/FLo-ABB/ABB_Robotics_Portfolio/main/assets/img/preview.PNG)](https://flo-abb.github.io/ABB_Robotics_Portfolio/)
