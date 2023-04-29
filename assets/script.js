@@ -1,3 +1,5 @@
+charts = [];
+
 function robotsChart(IdDiv, product_type) {
     let minReach=0;
     let maxReach=0;
@@ -17,7 +19,17 @@ function robotsChart(IdDiv, product_type) {
                         return context.dataset.data[index].random_color;
                     }
                 },
-                pointRadius: 5,
+                pointRadius: function(context) {
+                    var index = context.dataIndex;
+                    if (typeof context.dataset.data[index] !== 'undefined') {
+                        if (context.dataset.data[index].show == true) {
+                            return 5;
+                        } else {
+                            return 0;
+                        }
+                        
+                    }
+                },
             }]
         },
         options: {
@@ -65,6 +77,7 @@ function robotsChart(IdDiv, product_type) {
             }
         }
     });
+    charts.push(myChart);
     // Color Management
     let nbTotal=0;
     let nbActual=0;
@@ -97,7 +110,9 @@ function robotsChart(IdDiv, product_type) {
                         product_thumb: myJson.items[index].product_thumb,
                         description: myJson.items[index].description,
                         read_more_url: myJson.items[index].read_more_url,
-                        random_color: randomColor
+                        random_color: randomColor,
+                        controller: myJson.items[index].variants[index2].controller,
+                        show: true
                     });   
                 }
             }
@@ -121,7 +136,9 @@ function robotsChart(IdDiv, product_type) {
                         product_thumb: myJson.items[index].product_thumb,
                         description: myJson.items[index].description,
                         read_more_url: myJson.items[index].read_more_url,
-                        random_color: randomColor
+                        random_color: randomColor,
+                        controller: myJson.items[index].variants[index2].controller,
+                        show: true
                     });   
                 }
                 nbActual++;
@@ -167,4 +184,20 @@ function openRobotType(evt, robotType) {
     }
     document.getElementById(robotType).style.display = "block";
     evt.currentTarget.className += " active";
+}
+
+function show_hide(checkbox) {
+    console.log(checkbox.checked+checkbox.value);
+    charts.forEach(element => {
+        element.data.datasets[0].data.forEach(subelement => {
+            if (subelement.x>10) {
+                if (subelement.show) {
+                    subelement.show = false;
+                } else {
+                    subelement.show = true;
+                }   
+            }
+        });
+        element.update();
+    });
 }
