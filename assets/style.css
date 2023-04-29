@@ -125,3 +125,10 @@ a{
 #Controllers_Choice {
    text-align: center;
 }
+
+input[type="checkbox" i] {
+   width: 16px;
+   height: 16px;
+   border-color: #bababa;
+   accent-color: #2a35ff;
+}
