@@ -1,9 +1,9 @@
 <!doctype html>
-<html>
+<html lang="en">
 
 <head>
     <title>Robotics portfolio</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js" integrity="sha512-TW5s0IT/IppJtu76UbysrBH9Hy/5X41OTAbQuffZFU6lQ1rdcLHzpU5BzVvr/YFykoiMYZVWlr/PX1mDcfM9Qg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.0/dist/chart.umd.min.js"></script>
     <link rel="icon" href="assets/logo/pro.png" />
     <link rel="stylesheet" href="assets/style.css">
     <meta charset="UTF-8">
@@ -37,10 +37,14 @@
         </div>
         <div id="infoWindow">
             <div id="color"></div><h2 id="IRBName"></h2>
-            <div style="text-align: center;"><img id="image" src="" max-height="256px"></div>
+            <div style="text-align: center;"><img id="image" src="" max-height="256px" alt="Industrial Robot"></div>
             <p id="descr">Put your mouse hover the circles in the chart to interact with them !</p>
             <div style="text-align: center;"><button id="MoreContainer" class="More"><a href="https://new.abb.com/products/robotics" id="More">ABB Robotics Website</a></button></div>
         </div>
+    </div>
+    <div id="Controllers_Choice">
+        <input id="IRC5_checkbox" type="checkbox" checked="" value="IRC5" name="IRC5" onclick="show_hide(this)"><label for="IRC5_checkbox"> IRC5</label>
+        <input id="Omnicore_checkbox" type="checkbox" checked="" value="Omnicore" name="Omnicore" onclick="show_hide(this)"><label for="Omnicore_checkbox"> Omnicore</label>
     </div>
     <div id="disclaimer">This website is not affiliated with any company or organization. Information provided is for general informational purposes only</div>
     <script type="text/javascript" src="assets/inlineJson.js"></script>
