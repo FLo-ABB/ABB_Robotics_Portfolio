@@ -23,13 +23,13 @@
         <a class="logo" href="" rel="home" title="Robotics Portfolio" target="_self">
             <img src="assets/logo/pro.png" alt="ABB Logo" style="width: 50px; height: 50px; display: inline-block;">
         </a>
-        <div class="tab"><button class="tablinks" onclick="openRobotType(event, 'Articulated')"
+        <div class="tab"><button class="tablinks" onclick="open_type_tab(event, 'Articulated')"
                 id="defaultOpen">Articulated</button><button class="tablinks"
-                onclick="openRobotType(event, 'Collaborative')">Collaborative</button><button class="tablinks"
-                onclick="openRobotType(event, 'Palletizer')">Palletizer</button><button class="tablinks"
-                onclick="openRobotType(event, 'SCARA')">SCARA</button><button class="tablinks"
-                onclick="openRobotType(event, 'Parallel')">Picker</button><button class="tablinks"
-                onclick="openRobotType(event, 'Paint')">Paint</button></div>
+                onclick="open_type_tab(event, 'Collaborative')">Collaborative</button><button class="tablinks"
+                onclick="open_type_tab(event, 'Palletizer')">Palletizer</button><button class="tablinks"
+                onclick="open_type_tab(event, 'SCARA')">SCARA</button><button class="tablinks"
+                onclick="open_type_tab(event, 'Picker')">Picker</button><button class="tablinks"
+                onclick="open_type_tab(event, 'Paint')">Paint</button></div>
     </header>
     <div id="container">
         <div id="Articulated" class="tabcontent">
@@ -44,8 +44,8 @@
         <div id="Palletizer" class="tabcontent">
             <div id="chart"><canvas id="myChartPalletizer"></canvas></div>
         </div>
-        <div id="Parallel" class="tabcontent">
-            <div id="chart"><canvas id="myChartParallel"></canvas></div>
+        <div id="Picker" class="tabcontent">
+            <div id="chart"><canvas id="myChartPicker"></canvas></div>
         </div>
         <div id="Paint" class="tabcontent">
             <div id="chart"><canvas id="myChartPaint"></canvas></div>
@@ -60,10 +60,10 @@
         </div>
     </div>
     <div id="Controllers_Choice">
-        <input id="IRC5_checkbox" type="checkbox" checked="" value="IRC5" name="IRC5" onclick="show_hide(this)"><label
+        <input id="IRC5_checkbox" type="checkbox" checked="" value="IRC5" name="IRC5" onclick="filter_controller(this)"><label
             for="IRC5_checkbox"> IRC5</label>
         <input id="Omnicore_checkbox" type="checkbox" checked="" value="Omnicore" name="Omnicore"
-            onclick="show_hide(this)"><label for="Omnicore_checkbox"> OmniCore</label>
+            onclick="filter_controller(this)"><label for="Omnicore_checkbox"> OmniCore</label>
     </div>
     <div id="disclaimer">This website is not affiliated with any company or organization. Information provided is for
         general informational purposes only</div>
