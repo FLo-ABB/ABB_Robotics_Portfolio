@@ -7,28 +7,7 @@ function get_robots_chart(IdDiv, product_type) {
     const myChart = new Chart(ctx, {
         type: 'scatter',
         data: {
-            datasets: [{
-                label: "Robots",
-                data: [],
-                backgroundColor: 'rgb(20, 20, 20)',
-                pointBackgroundColor: function (context) {
-                    let index = context.dataIndex;
-                    if (typeof context.dataset.data[index] !== 'undefined') {
-                        return context.dataset.data[index].random_color;
-                    }
-                },
-                pointRadius: function (context) {
-                    let index = context.dataIndex;
-                    if (typeof context.dataset.data[index] !== 'undefined') {
-                        if (context.dataset.data[index].show) {
-                            return 5;
-                        } else {
-                            return 0;
-                        }
-
-                    }
-                },
-            }]
+            datasets: []
         },
         options: {
             scales: {
@@ -57,15 +36,15 @@ function get_robots_chart(IdDiv, product_type) {
                 tooltip: {
                     callbacks: {
                         label: (tooltipItem) => {
-                            return myChart.data.datasets[0].data[tooltipItem.dataIndex].name;
+                            return myChart.data.datasets[tooltipItem.datasetIndex].data[tooltipItem.dataIndex].name;
                         },
                         afterFooter: function (chart) {
-                            document.getElementById('IRBName').innerHTML = myChart.data.datasets[0].data[chart[chart.length - 1].dataIndex].name;
-                            document.getElementById('image').setAttribute('src', "assets/img/" + myChart.data.datasets[0].data[chart[chart.length - 1].dataIndex].product_thumb);
-                            document.getElementById('descr').innerHTML = myChart.data.datasets[0].data[chart[chart.length - 1].dataIndex].description;
-                            document.getElementById('More').setAttribute('href', myChart.data.datasets[0].data[chart[chart.length - 1].dataIndex].read_more_url);
+                            document.getElementById('IRBName').innerHTML = chart[chart.length - 1].dataset.data[0].name;
+                            document.getElementById('image').setAttribute('src', "assets/img/" + chart[chart.length - 1].dataset.data[0].product_thumb);
+                            document.getElementById('descr').innerHTML = chart[chart.length - 1].dataset.data[0].description;
+                            document.getElementById('More').setAttribute('href', chart[chart.length - 1].dataset.data[0].read_more_url);
                             document.getElementById('More').innerHTML = "Learn more...";
-                            document.getElementById('color').setAttribute('style', "background-color:" + myChart.data.datasets[0].data[chart[chart.length - 1].dataIndex].random_color);
+                            document.getElementById('color').setAttribute('style', "background-color:" + chart[chart.length - 1].dataset.data[0].random_color);
                         }
                     }
                 },
@@ -75,18 +54,44 @@ function get_robots_chart(IdDiv, product_type) {
             }
         }
     });
-    myJson.items.filter(item => item.product_type === product_type || (product_type === "Palletizer" && ["IRB 460", "IRB 760", "IRB 660"].includes(item.product_name)))
-    .forEach(item => {
-        create_robot_point(item, myChart, nbTotal, nbActual);
-        nbActual++;
-    });
+    myJson.items.filter(item => ((item.product_type === product_type) && !["IRB 460", "IRB 760", "IRB 660"].includes(item.product_name)) || (product_type === "Palletizer" && ["IRB 460", "IRB 760", "IRB 660"].includes(item.product_name)))
+        .forEach(item => {
+            create_robot_point(item, myChart, nbTotal, nbActual);
+            nbActual++;
+        });
     return resized_chart(myChart);
 }
 
 function create_robot_point(robot, chart, nb_total, nb_actual) {
+    chart.data.datasets.push({
+        label: "Robots",
+        data: [],
+        backgroundColor: 'rgb(20, 20, 20)',
+        showLine: true,
+        borderColor: function (context) {
+            return context.dataset.data[0].random_color;
+        },
+        pointBackgroundColor: function (context) {
+            return context.dataset.data[0].random_color;
+        },
+        pointRadius: function (context) {
+            if (context.dataset.data[0].show) {
+                return 5;
+            } else {
+                return 0;
+            }
+        },
+        borderWidth: function (context) {
+            if (context.dataset.data[0].show) {
+                return 4;
+            } else {
+                return 0;
+            }
+        }
+    });
     let randomColor = `hsl(${Math.floor((nb_actual / nb_total) * 180) * (nb_actual % 2) + Math.floor(180 + ((nb_actual + 1) / nb_total) * 180) * ((nb_actual + 1) % 2)},100%,60%)`;
     robot.variants.forEach(variant => {
-        chart.data.datasets[0].data.push({
+        chart.data.datasets[chart.data.datasets.length - 1].data.push({
             y: variant.reach * 1000,
             x: variant.capacity,
             name: variant.name,
@@ -101,22 +106,23 @@ function create_robot_point(robot, chart, nb_total, nb_actual) {
 }
 
 function resized_chart(chart) {
-    let minReach = 0;
-    let minPayload = 0;
-    let maxReach = 0;
-    let maxPayload = 0;
-    for (let data of chart.data.datasets[0].data) {
-        if ((minReach == 0) || (minReach >= data.y))  minReach = data.y * .9;
-        if ((minPayload == 0) || (minPayload >= data.x))  minPayload = data.x * .9;
-        if ((maxReach == 0) || (maxReach <= data.y)) maxReach = data.y * 2;
-        if ((maxPayload == 0) || (maxPayload <= data.x))  maxPayload = data.x * 2;
-    }
+    let minReach = Infinity;
+    let minPayload = Infinity;
+    let maxReach = -Infinity;
+    let maxPayload = -Infinity;
+    chart.data.datasets.forEach(dataset => {
+        dataset.data.forEach(data => {
+            minReach = Math.min(minReach, data.y * 0.9);
+            minPayload = Math.min(minPayload, data.x * 0.9);
+            maxReach = Math.max(maxReach, data.y * 2);
+            maxPayload = Math.max(maxPayload, data.x * 2);
+        });
+    });
     chart.options.scales.y.min = minReach;
     chart.options.scales.x.min = minPayload;
     chart.options.scales.y.max = maxReach;
     chart.options.scales.x.max = maxPayload;
     chart.update();
-    return chart;
 }
 
 function get_number_by_type(type) {
@@ -140,21 +146,23 @@ function open_type_tab(evt, robotType) {
 function filter_controller() {
     const irc5Checked = document.getElementById("IRC5_checkbox").checked;
     const omnicoreChecked = document.getElementById("Omnicore_checkbox").checked;
-    
+
     charts.forEach(chart => {
-      chart.data.datasets[0].data.forEach(data => {
-        let show = false;
-        if (irc5Checked && omnicoreChecked) {
-          show = true;
-        } else if (!irc5Checked && omnicoreChecked) {
-          show = data.controller.some(controller => controller.includes("OmniCore"));
-        } else if (irc5Checked && !omnicoreChecked) {
-          show = data.controller.some(controller => controller.includes("IRC5"));
-        }
-        data.show = show;
-      });
-      chart.update();
+        chart.data.datasets.forEach(dataset => {
+            dataset.data.forEach(data => {
+                let show = false;
+                if (irc5Checked && omnicoreChecked) {
+                    show = true;
+                } else if (!irc5Checked && omnicoreChecked) {
+                    show = data.controller.some(controller => controller.includes("OmniCore"));
+                } else if (irc5Checked && !omnicoreChecked) {
+                    show = data.controller.some(controller => controller.includes("IRC5"));
+                }
+                data.show = show;
+            });
+        });
+        chart.update();
     });
-  }
+}
 
 document.getElementById("defaultOpen").click();
