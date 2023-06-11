@@ -1,5 +1,4 @@
-// Define charts array with robot charts and update canvas elements in HTML.
-let charts = [
+const charts = [
     getRobotChart('myChartArticulated', "Articulated"),
     getRobotChart('myChartPalletizer', "Palletizer"),
     getRobotChart('myChartSCARA', "SCARA"),
@@ -8,38 +7,18 @@ let charts = [
     getRobotChart('myChartCollaborative', "Collaboratives")
 ];
 
-/**
- * Creates and Returns a robots chart with specified ID and product type.
- * 
- * @param {string} chartId - ID of chart canvas element.
- * @param {string} productType - Type of robot product.
- * @returns {Chart} - Chart object.
- */
 function getRobotChart(chartId, productType) {
-    let nbTotal = getNumberOfRobotsByType(productType, myJson);
-    let nbActual = 0;
-    if (document.getElementById(chartId) === null) {
-        console.error("Chart ID not found: " + chartId);
-        return;
-    }
-    const ctx = document.getElementById(chartId).getContext('2d');
-    const actualChart = createEmptyChart(ctx);
+    const actualChart = createEmptyChart(document.getElementById(chartId).getContext('2d'));
     let json_sorted = getJsonVariantSorted(myJson, "payload");
-    json_sorted.items.filter(item => ((item.product_type === productType) && !["IRB 460", "IRB 760", "IRB 660"].includes(item.product_name)) || (productType === "Palletizer" && ["IRB 460", "IRB 760", "IRB 660"].includes(item.product_name)))
-        .forEach(item => {
-            createRobotVariantPoints(actualChart, item, nbTotal, nbActual);
-            nbActual++;
+    json_sorted.items.filter(robot => ((robot.product_type === productType) && !["IRB 460", "IRB 760", "IRB 660"].includes(robot.product_name)) || (productType === "Palletizer" && ["IRB 460", "IRB 760", "IRB 660"].includes(robot.product_name)))
+        .forEach((robot, index) => {
+            createRobotVariantPoints(actualChart, robot, getNumberOfRobotsByType(productType, myJson), index);
         });
-    return getResizedChart(actualChart);
+    const resizedChart = getResizedChart(actualChart);
+    resizedChart.update();
+    return resizedChart;
 }
 
-/**
- * 
- * returns a empty product chart
- * 
- * @param {String} ctx 
- * @returns {Chart} - Chart object.
- */
 function createEmptyChart(ctx) {
     return new Chart(ctx, {
         type: 'scatter',
@@ -50,9 +29,6 @@ function createEmptyChart(ctx) {
             scales: {
                 x: {
                     type: 'logarithmic',
-                    position: 'bottom',
-                    min: 0,
-                    max: 0,
                     title: {
                         display: true,
                         text: 'Payload (kg)'
@@ -60,9 +36,6 @@ function createEmptyChart(ctx) {
                 },
                 y: {
                     type: 'logarithmic',
-                    position: 'left',
-                    min: 0,
-                    max: 0,
                     title: {
                         display: true,
                         text: 'Reach (mm)'
@@ -93,15 +66,7 @@ function createEmptyChart(ctx) {
     });
 }
 
-/**
- * Creates a robot point on specified chart.
- * 
- * @param {object} robot - Robot object.
- * @param {Chart} chart - Chart object.
- * @param {number} nbTotal - Total number of robots of specified type.
- * @param {number} nbActual - Actual number of robots of specified type.
- */
-function createRobotVariantPoints(chart, robot, nbTotal, nbActual) {
+function createRobotVariantPoints(chart, robot, populationSize, index) {
     chart.data.datasets.push({
         label: "Robots",
         data: [],
@@ -114,21 +79,13 @@ function createRobotVariantPoints(chart, robot, nbTotal, nbActual) {
             return context.dataset.data[0].random_color;
         },
         pointRadius: function (context) {
-            if (context.dataset.data[0].show) {
-                return 4;
-            } else {
-                return 0;
-            }
+            return context.dataset.data[0].show ? 4 : 0;
         },
         borderWidth: function (context) {
-            if (context.dataset.data[0].show) {
-                return 2;
-            } else {
-                return 0;
-            }
+            return context.dataset.data[0].show ? 2 : 0;
         }
     });
-    let randomColor = `hsl(${Math.floor((nbActual / nbTotal) * 180) * (nbActual % 2) + Math.floor(180 + ((nbActual + 1) / nbTotal) * 180) * ((nbActual + 1) % 2)},100%,60%)`;
+    let randomColor = `hsl(${Math.floor((index / populationSize) * 180) * (index % 2) + Math.floor(180 + ((index + 1) / populationSize) * 180) * ((index + 1) % 2)},100%,60%)`;
     robot.variants.forEach(variant => {
         chart.data.datasets[chart.data.datasets.length - 1].data.push({
             y: variant.reach * 1000,
@@ -144,13 +101,6 @@ function createRobotVariantPoints(chart, robot, nbTotal, nbActual) {
     });
 }
 
-
-/**
- * Resizes specified chart based on data.
- * 
- * @param {Chart} chart - Chart object.
- * @returns {Chart} - Resized chart object.
- */
 function getResizedChart(chart) {
     let minReach = Infinity;
     let minPayload = Infinity;
@@ -168,52 +118,25 @@ function getResizedChart(chart) {
     chart.options.scales.x.min = minPayload;
     chart.options.scales.y.max = maxReach;
     chart.options.scales.x.max = maxPayload;
-    chart.update();
     return chart;
 }
 
-/**
- * Returns the number of robots of specified type.
- * 
- * @param {String} type  - Type of sorting. Can be "payload" or "reach".
- * @param {String} json - JSON object to sort.
- * @returns 
- */
 function getNumberOfRobotsByType(type, json) {
     return json.items.filter(item => item.product_type === type || (type === "Palletizer" && ["IRB 460", "IRB 760", "IRB 660"].includes(item.product_name))).length;
 }
 
-/**
- * Open specified tab.
- * 
- * @param {Event} evt - Event object.
- * @param {String} robotType - Type of robot.
- * @returns
- */
 function openTypeTab(evt, robotType) {
-    let i, tabcontent, tablinks;
-    tabcontent = document.getElementsByClassName("tabcontent");
-    for (i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].style.display = "none";
-    }
-    tablinks = document.getElementsByClassName("tablinks");
-    for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].className = tablinks[i].className.replace(" active", "");
-    }
+    const tabcontent = Array.from(document.getElementsByClassName("tabcontent"));
+    tabcontent.forEach(tab => { tab.style.display = "none"; });
+    const tablinks = Array.from(document.getElementsByClassName("tablinks"));
+    tablinks.forEach(tablink => { tablink.className = tablink.className.replace(" active", ""); });
     document.getElementById(robotType).style.display = "block";
     evt.currentTarget.className += " active";
 }
 
-/**
- * Filters robots based on selected checkbox and update charts accordingly.
- * 
- * @returns
- * 
- */
 function filterByController() {
     const irc5Checked = document.getElementById("IRC5_checkbox").checked;
     const omnicoreChecked = document.getElementById("Omnicore_checkbox").checked;
-
     charts.forEach(chart => {
         chart.data.datasets.forEach(dataset => {
             dataset.data.forEach(data => {
@@ -232,33 +155,10 @@ function filterByController() {
     });
 }
 
-/**
- * 
- * Returns a sorted JSON with variants sorted by specified string : "payload" or "reach".
- * 
- * @param {JSON} json - JSON object to sort.
- * @param {String} byString - String to sort by. Can be "payload" or "reach".
- * @returns {JSON} - Sorted JSON object.
- * 
- */
-function getJsonVariantSorted(json, byString = "payload") {
-    const sortFunction = (a, b) => {
-        if (a[byString] < b[byString]) {
-            return -1;
-        } else if (a[byString] > b[byString]) {
-            return 1;
-        } else {
-            if (a.capacity < b.capacity) {
-                return -1;
-            } else if (a.capacity > b.capacity) {
-                return 1;
-            } else {
-                return 0;
-            }
-        }
-    };
+function getJsonVariantSorted(json, sortBy = "payload") {
+    const sortProperty = sortBy === "payload" ? "capacity" : "reach";
     json.items.forEach(item => {
-        item.variants.sort(sortFunction);
+        item.variants.sort((a, b) => (a[sortProperty] - b[sortProperty]));
     });
     return json;
 }
