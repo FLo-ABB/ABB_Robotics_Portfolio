@@ -1,7 +1,7 @@
 let charts = [get_robots_chart('myChartArticulated', "Articulated"), get_robots_chart('myChartPalletizer', "Palletizer"), get_robots_chart('myChartSCARA', "SCARA"), get_robots_chart('myChartPicker', "Parallel"), get_robots_chart('myChartPaint', "Paint"), get_robots_chart('myChartCollaborative', "Collaboratives")];
 
 function get_robots_chart(IdDiv, product_type) {
-    let nbTotal = get_number_by_type(product_type);
+    let nbTotal = get_number_by_type(product_type, myJson);
     let nbActual = 0;
     const ctx = document.getElementById(IdDiv).getContext('2d');
     const myChart = new Chart(ctx, {
@@ -54,7 +54,8 @@ function get_robots_chart(IdDiv, product_type) {
             }
         }
     });
-    myJson.items.filter(item => ((item.product_type === product_type) && !["IRB 460", "IRB 760", "IRB 660"].includes(item.product_name)) || (product_type === "Palletizer" && ["IRB 460", "IRB 760", "IRB 660"].includes(item.product_name)))
+    let json_sorted = get_Json_variant_sorted(myJson, "payload");
+    json_sorted.items.filter(item => ((item.product_type === product_type) && !["IRB 460", "IRB 760", "IRB 660"].includes(item.product_name)) || (product_type === "Palletizer" && ["IRB 460", "IRB 760", "IRB 660"].includes(item.product_name)))
         .forEach(item => {
             create_robot_point(item, myChart, nbTotal, nbActual);
             nbActual++;
@@ -76,14 +77,14 @@ function create_robot_point(robot, chart, nb_total, nb_actual) {
         },
         pointRadius: function (context) {
             if (context.dataset.data[0].show) {
-                return 5;
+                return 4;
             } else {
                 return 0;
             }
         },
         borderWidth: function (context) {
             if (context.dataset.data[0].show) {
-                return 4;
+                return 2;
             } else {
                 return 0;
             }
@@ -123,10 +124,11 @@ function resized_chart(chart) {
     chart.options.scales.y.max = maxReach;
     chart.options.scales.x.max = maxPayload;
     chart.update();
+    return chart;
 }
 
-function get_number_by_type(type) {
-    return myJson.items.filter(item => item.product_type === type || (type === "Palletizer" && ["IRB 460", "IRB 760", "IRB 660"].includes(item.product_name))).length;
+function get_number_by_type(type, json) {
+    return json.items.filter(item => item.product_type === type || (type === "Palletizer" && ["IRB 460", "IRB 760", "IRB 660"].includes(item.product_name))).length;
 }
 
 function open_type_tab(evt, robotType) {
@@ -164,5 +166,27 @@ function filter_controller() {
         chart.update();
     });
 }
+
+function get_Json_variant_sorted(json, byString = "payload") {
+    const sortFunction = (a, b) => {
+      if (a[byString] < b[byString]) {
+        return -1;
+      } else if (a[byString] > b[byString]) {
+        return 1;
+      } else {
+        if (a.capacity < b.capacity) {
+          return -1;
+        } else if (a.capacity > b.capacity) {
+          return 1;
+        } else {
+          return 0;
+        }
+      }
+    };
+    json.items.forEach(item => {
+      item.variants.sort(sortFunction);
+    });
+    return json;
+  }
 
 document.getElementById("defaultOpen").click();
