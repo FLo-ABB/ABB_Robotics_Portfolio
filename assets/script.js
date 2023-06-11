@@ -1,10 +1,47 @@
-let charts = [get_robots_chart('myChartArticulated', "Articulated"), get_robots_chart('myChartPalletizer', "Palletizer"), get_robots_chart('myChartSCARA', "SCARA"), get_robots_chart('myChartPicker', "Parallel"), get_robots_chart('myChartPaint', "Paint"), get_robots_chart('myChartCollaborative', "Collaboratives")];
+// Define charts array with robot charts and update canvas elements in HTML.
+let charts = [
+    getRobotChart('myChartArticulated', "Articulated"),
+    getRobotChart('myChartPalletizer', "Palletizer"),
+    getRobotChart('myChartSCARA', "SCARA"),
+    getRobotChart('myChartPicker', "Parallel"),
+    getRobotChart('myChartPaint', "Paint"),
+    getRobotChart('myChartCollaborative', "Collaboratives")
+];
 
-function get_robots_chart(IdDiv, product_type) {
-    let nbTotal = get_number_by_type(product_type, myJson);
+/**
+ * Creates and Returns a robots chart with specified ID and product type.
+ * 
+ * @param {string} chartId - ID of chart canvas element.
+ * @param {string} productType - Type of robot product.
+ * @returns {Chart} - Chart object.
+ */
+function getRobotChart(chartId, productType) {
+    let nbTotal = getNumberOfRobotsByType(productType, myJson);
     let nbActual = 0;
-    const ctx = document.getElementById(IdDiv).getContext('2d');
-    const myChart = new Chart(ctx, {
+    if (document.getElementById(chartId) === null) {
+        console.error("Chart ID not found: " + chartId);
+        return;
+    }
+    const ctx = document.getElementById(chartId).getContext('2d');
+    const actualChart = createEmptyChart(ctx);
+    let json_sorted = getJsonVariantSorted(myJson, "payload");
+    json_sorted.items.filter(item => ((item.product_type === productType) && !["IRB 460", "IRB 760", "IRB 660"].includes(item.product_name)) || (productType === "Palletizer" && ["IRB 460", "IRB 760", "IRB 660"].includes(item.product_name)))
+        .forEach(item => {
+            createRobotVariantPoints(actualChart, item, nbTotal, nbActual);
+            nbActual++;
+        });
+    return getResizedChart(actualChart);
+}
+
+/**
+ * 
+ * returns a empty product chart
+ * 
+ * @param {String} ctx 
+ * @returns {Chart} - Chart object.
+ */
+function createEmptyChart(ctx) {
+    return new Chart(ctx, {
         type: 'scatter',
         data: {
             datasets: []
@@ -36,7 +73,7 @@ function get_robots_chart(IdDiv, product_type) {
                 tooltip: {
                     callbacks: {
                         label: (tooltipItem) => {
-                            return myChart.data.datasets[tooltipItem.datasetIndex].data[tooltipItem.dataIndex].name;
+                            return tooltipItem.chart.data.datasets[tooltipItem.datasetIndex].data[tooltipItem.dataIndex].name;
                         },
                         afterFooter: function (chart) {
                             document.getElementById('IRBName').innerHTML = chart[chart.length - 1].dataset.data[0].name;
@@ -54,16 +91,17 @@ function get_robots_chart(IdDiv, product_type) {
             }
         }
     });
-    let json_sorted = get_Json_variant_sorted(myJson, "payload");
-    json_sorted.items.filter(item => ((item.product_type === product_type) && !["IRB 460", "IRB 760", "IRB 660"].includes(item.product_name)) || (product_type === "Palletizer" && ["IRB 460", "IRB 760", "IRB 660"].includes(item.product_name)))
-        .forEach(item => {
-            create_robot_point(item, myChart, nbTotal, nbActual);
-            nbActual++;
-        });
-    return resized_chart(myChart);
 }
 
-function create_robot_point(robot, chart, nb_total, nb_actual) {
+/**
+ * Creates a robot point on specified chart.
+ * 
+ * @param {object} robot - Robot object.
+ * @param {Chart} chart - Chart object.
+ * @param {number} nbTotal - Total number of robots of specified type.
+ * @param {number} nbActual - Actual number of robots of specified type.
+ */
+function createRobotVariantPoints(chart, robot, nbTotal, nbActual) {
     chart.data.datasets.push({
         label: "Robots",
         data: [],
@@ -90,7 +128,7 @@ function create_robot_point(robot, chart, nb_total, nb_actual) {
             }
         }
     });
-    let randomColor = `hsl(${Math.floor((nb_actual / nb_total) * 180) * (nb_actual % 2) + Math.floor(180 + ((nb_actual + 1) / nb_total) * 180) * ((nb_actual + 1) % 2)},100%,60%)`;
+    let randomColor = `hsl(${Math.floor((nbActual / nbTotal) * 180) * (nbActual % 2) + Math.floor(180 + ((nbActual + 1) / nbTotal) * 180) * ((nbActual + 1) % 2)},100%,60%)`;
     robot.variants.forEach(variant => {
         chart.data.datasets[chart.data.datasets.length - 1].data.push({
             y: variant.reach * 1000,
@@ -106,7 +144,14 @@ function create_robot_point(robot, chart, nb_total, nb_actual) {
     });
 }
 
-function resized_chart(chart) {
+
+/**
+ * Resizes specified chart based on data.
+ * 
+ * @param {Chart} chart - Chart object.
+ * @returns {Chart} - Resized chart object.
+ */
+function getResizedChart(chart) {
     let minReach = Infinity;
     let minPayload = Infinity;
     let maxReach = -Infinity;
@@ -127,11 +172,25 @@ function resized_chart(chart) {
     return chart;
 }
 
-function get_number_by_type(type, json) {
+/**
+ * Returns the number of robots of specified type.
+ * 
+ * @param {String} type  - Type of sorting. Can be "payload" or "reach".
+ * @param {String} json - JSON object to sort.
+ * @returns 
+ */
+function getNumberOfRobotsByType(type, json) {
     return json.items.filter(item => item.product_type === type || (type === "Palletizer" && ["IRB 460", "IRB 760", "IRB 660"].includes(item.product_name))).length;
 }
 
-function open_type_tab(evt, robotType) {
+/**
+ * Open specified tab.
+ * 
+ * @param {Event} evt - Event object.
+ * @param {String} robotType - Type of robot.
+ * @returns
+ */
+function openTypeTab(evt, robotType) {
     let i, tabcontent, tablinks;
     tabcontent = document.getElementsByClassName("tabcontent");
     for (i = 0; i < tabcontent.length; i++) {
@@ -145,7 +204,13 @@ function open_type_tab(evt, robotType) {
     evt.currentTarget.className += " active";
 }
 
-function filter_controller() {
+/**
+ * Filters robots based on selected checkbox and update charts accordingly.
+ * 
+ * @returns
+ * 
+ */
+function filterByController() {
     const irc5Checked = document.getElementById("IRC5_checkbox").checked;
     const omnicoreChecked = document.getElementById("Omnicore_checkbox").checked;
 
@@ -167,26 +232,35 @@ function filter_controller() {
     });
 }
 
-function get_Json_variant_sorted(json, byString = "payload") {
+/**
+ * 
+ * Returns a sorted JSON with variants sorted by specified string : "payload" or "reach".
+ * 
+ * @param {JSON} json - JSON object to sort.
+ * @param {String} byString - String to sort by. Can be "payload" or "reach".
+ * @returns {JSON} - Sorted JSON object.
+ * 
+ */
+function getJsonVariantSorted(json, byString = "payload") {
     const sortFunction = (a, b) => {
-      if (a[byString] < b[byString]) {
-        return -1;
-      } else if (a[byString] > b[byString]) {
-        return 1;
-      } else {
-        if (a.capacity < b.capacity) {
-          return -1;
-        } else if (a.capacity > b.capacity) {
-          return 1;
+        if (a[byString] < b[byString]) {
+            return -1;
+        } else if (a[byString] > b[byString]) {
+            return 1;
         } else {
-          return 0;
+            if (a.capacity < b.capacity) {
+                return -1;
+            } else if (a.capacity > b.capacity) {
+                return 1;
+            } else {
+                return 0;
+            }
         }
-      }
     };
     json.items.forEach(item => {
-      item.variants.sort(sortFunction);
+        item.variants.sort(sortFunction);
     });
     return json;
-  }
+}
 
 document.getElementById("defaultOpen").click();
