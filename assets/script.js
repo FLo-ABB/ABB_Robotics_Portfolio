@@ -49,12 +49,12 @@ function createEmptyChart(ctx) {
                             return tooltipItem.chart.data.datasets[tooltipItem.datasetIndex].data[tooltipItem.dataIndex].name;
                         },
                         afterFooter: function (chart) {
-                            document.getElementById('IRBName').innerHTML = chart[chart.length - 1].dataset.data[0].name;
-                            document.getElementById('image').setAttribute('src', "assets/img/" + chart[chart.length - 1].dataset.data[0].product_thumb);
-                            document.getElementById('descr').innerHTML = chart[chart.length - 1].dataset.data[0].description;
-                            document.getElementById('More').setAttribute('href', chart[chart.length - 1].dataset.data[0].read_more_url);
+                            document.getElementById('IRBName').innerHTML = chart[0].dataset.data[chart[0].dataIndex].name;
+                            document.getElementById('image').setAttribute('src', "assets/img/" + chart[0].dataset.data[chart[0].dataIndex].product_thumb);
+                            document.getElementById('descr').innerHTML = chart[0].dataset.data[chart[0].dataIndex].description;
+                            document.getElementById('More').setAttribute('href', chart[0].dataset.data[chart[0].dataIndex].read_more_url);
                             document.getElementById('More').innerHTML = "Learn more...";
-                            document.getElementById('color').setAttribute('style', "background-color:" + chart[chart.length - 1].dataset.data[0].random_color);
+                            document.getElementById('color').setAttribute('style', "background-color:" + chart[0].dataset.data[chart[0].dataIndex].random_color);
                         }
                     }
                 },
