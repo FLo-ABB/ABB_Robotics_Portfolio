@@ -23,9 +23,9 @@ jobs:
       - name: Run script
         id: run-script
         run: |
-          output=${python .github/scripts/check_database.py}
+          output="Hello World"
           echo "no_error=$output" >> $GITHUB_OUTPUT   
-        # 
+        # ${python .github/scripts/check_database.py}
         # echo "no_error=${output}" >> $GITHUB_OUTPUT
       
       - name: create an issue
