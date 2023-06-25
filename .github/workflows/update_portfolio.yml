@@ -23,10 +23,7 @@ jobs:
       - name: Run script
         run: python .github/scripts/check_database.py
 
-      - name: Commit changes
-        run: |
-          git config --local "user.name" "GitHub Action"
-          git config --local "user.email" "github.action@github.com"
-          git add .
-          git commit -m "Update inlineJson.js and img folder - $(date +'%Y-%m-%d %H:%M:%S')" --allow-empty
-          git push
+      - name: Git Auto Commit
+        uses: stefanzweifel/git-auto-commit-action@v4.16.0
+        with:
+          commit_message: "Database updated - $(date +'%Y-%m-%d %H:%M:%S')"
