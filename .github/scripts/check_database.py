@@ -158,8 +158,11 @@ def add_changes_made_to_file(changes_made: str, file_path: str) -> None:
     Returns:
         None
     """
-    with open(file_path, "a") as f:
-        f.write(changes_made)
+    with open(file_path, "r") as f:
+        content = f.read()
+    with open(file_path, "w") as f:
+        f.write(changes_made + content)
+
 
 
 def main() -> None:
