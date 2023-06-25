@@ -23,7 +23,7 @@ jobs:
       - name: Run script
         id: run-script
         run: |
-          output=$(python .github/scripts/update_database.py)
+          output=$(python .github/scripts/check_database.py)
           echo echo "Output [$output]"
           echo "no_error=$output" >> $GITHUB_OUTPUT   
       
