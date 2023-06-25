@@ -1,7 +1,7 @@
 name: Update Website Data
 on:
   schedule:
-    - cron: "15 11 * * *"
+    - cron: "19 9 * * *"
 
 jobs:
   update-website:
