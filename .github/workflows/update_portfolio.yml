@@ -36,10 +36,7 @@ jobs:
           body: |
             ### Context
             [Run](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})
-            [Codebase](https://github.com/${{ github.repository }}/tree/${{ github.sha }})
-            Workflow name - `${{ github.workflow }}`
-            Job -           `${{ github.job }}`
-            status -        `${{ job.status }}`
+            Exception -     `${{steps.run-script.outputs.no_error}}`
 
       - name: Git Auto Commit
         uses: stefanzweifel/git-auto-commit-action@v4.16.0
