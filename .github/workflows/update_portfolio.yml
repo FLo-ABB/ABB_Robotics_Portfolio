@@ -22,10 +22,12 @@ jobs:
 
       - name: Run script
         id: run-script
-        run: python .github/scripts/check_database.py
+        run: |
+          changes=$(python .github/scripts/check_database.py)
+          echo "::set-output name=changes::$changes"
       
       - name: create an issue
-        if: steps.run-script.outputs.result == 'false'
+        if: steps.run-script.outputs.changes == 'false'
         uses: dacbd/create-issue-action@main
         with:
           token: ${{ github.token }}
