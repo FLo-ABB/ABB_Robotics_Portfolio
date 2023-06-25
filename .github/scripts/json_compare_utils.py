@@ -1,6 +1,6 @@
 from typing import Dict
 
-def check_item_variants(item_extracted: Dict, item_website: Dict, item_name: str) -> None:
+def check_item_variants(item_extracted: Dict, item_website: Dict, item_name: str) -> str:
     """
     Check variants of an item for updates or additions.
 
@@ -12,17 +12,18 @@ def check_item_variants(item_extracted: Dict, item_website: Dict, item_name: str
     Returns:
         None
     """
-    global changes_made
+    changes_made = ''
     for key, value in item_extracted.items():
         if key != 'product_name' and value != item_website.get(key):
             if key == 'variants':
-                check_added_variants(item_extracted, item_website, item_name)
-                check_updated_or_deleted_variants(item_extracted, item_website, item_name)
+                changes_made += check_added_variants(item_extracted, item_website, item_name)
+                changes_made += check_updated_or_deleted_variants(item_extracted, item_website, item_name)
             else:
                 changes_made += f"\tIn {item_name}, the {key} has been updated, from '{item_website.get(key)}' to '{value}'\n"
+    return changes_made
 
 
-def check_added_variants(item_extracted: Dict, item_website: Dict, item_name: str) -> None:
+def check_added_variants(item_extracted: Dict, item_website: Dict, item_name: str) -> str:
     """
     Check for added variants in an item.
 
@@ -34,7 +35,7 @@ def check_added_variants(item_extracted: Dict, item_website: Dict, item_name: st
     Returns:
         None
     """
-    global changes_made
+    changes_made = ''
     extracted_variants = item_extracted.get('variants')
     website_variants = item_website.get('variants')
 
@@ -44,9 +45,10 @@ def check_added_variants(item_extracted: Dict, item_website: Dict, item_name: st
 
         if variant_website is None:
             changes_made += f"\tIn {item_name}'s family, the variant '{variant_name}' has been added\n"
+    return changes_made
 
 
-def check_updated_or_deleted_variants(item_extracted: Dict, item_website: Dict, item_name: str) -> None:
+def check_updated_or_deleted_variants(item_extracted: Dict, item_website: Dict, item_name: str) -> str:
     """
     Check for updated or deleted variants in an item.
 
@@ -58,7 +60,7 @@ def check_updated_or_deleted_variants(item_extracted: Dict, item_website: Dict, 
     Returns:
         None
     """
-    global changes_made
+    changes_made = ''
     extracted_variants = item_extracted.get('variants')
     website_variants = item_website.get('variants')
 
@@ -72,9 +74,10 @@ def check_updated_or_deleted_variants(item_extracted: Dict, item_website: Dict, 
             for variant_key, variant_value in variant_extracted.items():
                 if variant_value != variant_website.get(variant_key):
                     changes_made += f"\tIn {item_name}'s family, the variant '{variant_name}'s {variant_key} has been updated, from '{variant_website.get(variant_key)}' to '{variant_value}'\n"
+    return changes_made
 
 
-def check_json_refactoring(json_file_extracted: Dict, json_file_website: Dict) -> None:
+def check_json_refactoring(json_file_extracted: Dict, json_file_website: Dict) -> str:
     """
     Check for JSON refactoring, i.e., if the JSON files do not have the same keys.
 
@@ -85,8 +88,9 @@ def check_json_refactoring(json_file_extracted: Dict, json_file_website: Dict) -
     Returns:
         None
     """
-    global changes_made
+    changes_made =''
     if json_file_extracted.keys() != json_file_website.keys():
         global equality
         equality = False
         changes_made += "\tJSON refactoring\n"
+    return changes_made

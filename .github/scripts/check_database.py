@@ -9,11 +9,12 @@ from json_compare_utils import check_item_variants, check_json_refactoring
 
 import requests
 
+changes_made = f"-{datetime.datetime.now().strftime('%Y-%m-%d')}: \n"
 zip_name = "robots_db_prod.zip"
 zip_url = f"https://xrhayesstoragetest.blob.core.windows.net/libraries/{zip_name}"
 extracted_path = "./extracted"
 img_to_update = set()
-changes_made = f"-{datetime.datetime.now().strftime('%Y-%m-%d')}: \n"
+
 
 
 def download_and_extract_zip(zip_url: str, extracted_path: str) -> None:
@@ -85,9 +86,9 @@ def is_json_files_equal(json_file_extracted: Dict, json_file_website: Dict) -> b
             item_website = next((item for item in items_website if item.get('product_name') == item_name), None)
 
             if item_website is not None:
-                check_item_variants(item_extracted, item_website, item_name)
+                changes_made += check_item_variants(item_extracted, item_website, item_name)
 
-    check_json_refactoring(json_file_extracted, json_file_website)
+    changes_made += check_json_refactoring(json_file_extracted, json_file_website)
 
     return equality
 
