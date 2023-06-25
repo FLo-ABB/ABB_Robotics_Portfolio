@@ -22,7 +22,9 @@ jobs:
 
       - name: Run script
         id: run-script
-        run: echo "{no_error}={$(python .github/scripts/check_database.py)}" >> $GITHUB_OUTPUT
+        run: |
+          output=$(python .github/scripts/update_database.py)
+          echo "{no_error}={output}" >> $GITHUB_OUTPUT
       
       - name: create an issue
         if: steps.run-script.outputs.no_error == 'False'
