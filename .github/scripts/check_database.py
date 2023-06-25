@@ -232,7 +232,7 @@ def main() -> bool:
             add_changes_made_to_file(changes_made, os.path.join("assets", "release_notes.txt"))
         os.remove(zip_name)
         shutil.rmtree(extracted_path)
-        return False
+        return True
 
     except Exception as e:
         print(f"Error occurred during execution: {e}")
