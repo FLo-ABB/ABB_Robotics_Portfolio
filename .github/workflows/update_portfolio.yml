@@ -22,7 +22,7 @@ jobs:
 
       - name: Run script
         id: run-script
-        run: echo "toto"
+        run: echo "no_error=${"toto"}" >> $GITHUB_OUTPUT   
           # output=$(python .github/scripts/check_database.py)
           # echo "no_error=${output}" >> $GITHUB_OUTPUT
       
