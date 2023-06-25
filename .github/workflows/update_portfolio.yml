@@ -23,8 +23,8 @@ jobs:
       - name: Run script
         id: run-script
         run: |
-          changes=$(python .github/scripts/check_database.py)
-          echo "::set-output name=changes::$changes"
+          no_error=$(python .github/scripts/check_database.py)
+          echo "{no_error}={no_error}" >> $GITHUB_OUTPUT
       
       - name: create an issue
         if: steps.run-script.outputs.changes == 'false'
