@@ -4,6 +4,7 @@ import os
 import shutil
 import zipfile
 from typing import Dict
+from json import JSONDecodeError
 
 from json_compare_utils import check_item_variants, check_json_refactoring
 
@@ -14,7 +15,6 @@ zip_name = "robots_db_prod.zip"
 zip_url = f"https://xrhayesstoragetest.blob.core.windows.net/libraries/{zip_name}"
 extracted_path = "./extracted"
 img_to_update = set()
-
 
 
 def download_and_extract_zip(zip_url: str, extracted_path: str) -> None:
@@ -46,6 +46,34 @@ def download_and_extract_zip(zip_url: str, extracted_path: str) -> None:
 
     except (requests.RequestException, zipfile.BadZipFile, zipfile.LargeZipFile, FileNotFoundError) as e:
         print(f"Error occurred while downloading and extracting the ZIP file: {e}")
+
+
+def is_json_format_validated(json_obj: json) -> bool:
+    """
+    Validate if the JSON object follows the expected format.
+
+    Args:
+        json_obj (dict): JSON object to validate.
+
+    Returns:
+        bool: True if the JSON object is valid, False otherwise.
+    """
+    if "items" not in json_obj:
+        return False
+
+    items = json_obj["items"]
+    for item in items:
+        if ("product_name" not in item or "product_thumb" not in item or "tittle" not in item or "description" not in item
+            or "read_more_url" not in item or "product_type" not in item or "controller" not in item or "variants" not in item
+            ):
+            return False
+
+        variants = item["variants"]
+        for variant in variants:
+            if "name" not in variant or "capacity" not in variant or "reach" not in variant:
+                return False
+
+    return True
 
 
 def is_json_files_equal(json_file_extracted: Dict, json_file_website: Dict) -> bool:
@@ -164,19 +192,28 @@ def add_changes_made_to_file(changes_made: str, file_path: str) -> None:
         f.write(changes_made + content)
 
 
-
-def main() -> None:
+def main() -> bool:
     """
     Main function to check the website's JSON file and images for updates.
 
     Returns:
-        None
+        if no errors occurred: True
     """
     try:
         download_and_extract_zip(zip_url, extracted_path)
         json_file_website = get_json_from_js_var(os.path.join("assets", "inlineJson.js"), "myJson")
-        with open(os.path.join(extracted_path, "database.json"), 'r', encoding='utf-8') as f:
-            json_file_extracted = json.load(f)
+        try:
+            with open(os.path.join(extracted_path, "database.json"), 'r', encoding='utf-8') as f:
+                json_file_extracted = json.load(f)
+        except JSONDecodeError as e:
+            print(f"Error occurred while decoding JSON file: {e}")
+            return False
+        except FileNotFoundError as e:
+            print(f"Error occurred while opening JSON file: {e}")
+            return False
+        if not is_json_format_validated(json_file_extracted):
+            print("JSON file format is invalid")
+            return False
         jsons_equals = is_json_files_equal(json_file_extracted, json_file_website)
         image_extracted_folder_path = os.path.join(extracted_path, "img")
         image_website_folder_path = os.path.join("assets", "img")
@@ -195,9 +232,11 @@ def main() -> None:
             add_changes_made_to_file(changes_made, os.path.join("assets", "release_notes.txt"))
         os.remove(zip_name)
         shutil.rmtree(extracted_path)
+        return True
 
     except Exception as e:
         print(f"Error occurred during execution: {e}")
+        return False
 
 
 if __name__ == "__main__":
