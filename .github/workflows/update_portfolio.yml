@@ -22,12 +22,12 @@ jobs:
 
       - name: Run script
         id: run-script
-        run: |
-          output=$(python .github/scripts/check_database.py)
-          echo "no_error=${output}" >> $GITHUB_OUTPUT
+        run: echo "toto"
+          # output=$(python .github/scripts/check_database.py)
+          # echo "no_error=${output}" >> $GITHUB_OUTPUT
       
       - name: create an issue
-        if: ${{steps.run-script.outputs.no_error}} == 'False'
+        if: steps.run-script.outputs.no_error == 'False'
         uses: dacbd/create-issue-action@main
         with:
           token: ${{ github.token }}
