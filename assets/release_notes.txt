@@ -1,2 +1,6 @@
 -2023-06-25: 
 	First release notes
+-2023-06-25: 
+	IRB 1010 added
+	IRB 1011 deleted
+	Added CRB1100_thumb.png to img folder
