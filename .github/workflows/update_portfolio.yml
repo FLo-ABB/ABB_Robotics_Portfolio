@@ -28,7 +28,7 @@ jobs:
           echo "no_error=$output" >> $GITHUB_OUTPUT   
       
       - name: create an issue
-        if: steps.run-script.outputs.no_error == 'Fail'
+        if: steps.run-script.outputs.no_error != ''
         uses: dacbd/create-issue-action@main
         with:
           token: ${{ github.token }}

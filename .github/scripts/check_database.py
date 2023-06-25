@@ -64,8 +64,8 @@ def is_json_format_validated(json_obj: json) -> bool:
     items = json_obj["items"]
     for item in items:
         if ("product_name" not in item or "product_thumb" not in item or "tittle" not in item or "description" not in item
-            or "read_more_url" not in item or "product_type" not in item or "controller" not in item or "variants" not in item
-            ):
+                or "read_more_url" not in item or "product_type" not in item or "controller" not in item or "variants" not in item
+                ):
             return False
 
         variants = item["variants"]
@@ -192,12 +192,12 @@ def add_changes_made_to_file(changes_made: str, file_path: str) -> None:
         f.write(changes_made + content)
 
 
-def main() -> str:
+def main() -> None:
     """
     Main function to check the website's JSON file and images for updates.
 
     Returns:
-        if no errors occurred: "True"
+        None
     """
     try:
         download_and_extract_zip(zip_url, extracted_path)
@@ -207,13 +207,13 @@ def main() -> str:
                 json_file_extracted = json.load(f)
         except JSONDecodeError as e:
             print(f"Error occurred while decoding JSON file: {e}")
-            return "False"
+            return None
         except FileNotFoundError as e:
             print(f"Error occurred while opening JSON file: {e}")
-            return "False"
+            return None
         if not is_json_format_validated(json_file_extracted):
             print("JSON file format is invalid")
-            return "False"
+            return None
         jsons_equals = is_json_files_equal(json_file_extracted, json_file_website)
         image_extracted_folder_path = os.path.join(extracted_path, "img")
         image_website_folder_path = os.path.join("assets", "img")
@@ -232,12 +232,10 @@ def main() -> str:
             add_changes_made_to_file(changes_made, os.path.join("assets", "release_notes.txt"))
         os.remove(zip_name)
         shutil.rmtree(extracted_path)
-        print ("Toto")
-        return "Toto"
+        print("test ok ?")
 
     except Exception as e:
         print(f"Error occurred during execution: {e}")
-        return "False"
 
 
 if __name__ == "__main__":
