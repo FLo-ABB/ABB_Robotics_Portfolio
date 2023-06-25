@@ -24,10 +24,10 @@ jobs:
         id: run-script
         run: |
           no_error=$(python .github/scripts/check_database.py)
-          echo "{no_error}={no_error}" >> $GITHUB_OUTPUT
+          echo "no_error={no_error}" >> $GITHUB_OUTPUT
       
       - name: create an issue
-        if: steps.run-script.outputs.changes == 'false'
+        if: steps.run-script.outputs.no_error == 'False'
         uses: dacbd/create-issue-action@main
         with:
           token: ${{ github.token }}
