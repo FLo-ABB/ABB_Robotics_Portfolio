@@ -27,5 +27,5 @@ jobs:
           git config --local "user.name" "GitHub Action"
           git config --local "user.email" "github.action@github.com"
           git add .
-          git commit -m "Update inlineJson.js and img folder - $(date +'%Y-%m-%d %H:%M:%S')
+          git commit -m "Update inlineJson.js and img folder - $(date +'%Y-%m-%d %H:%M:%S')"
           git push
