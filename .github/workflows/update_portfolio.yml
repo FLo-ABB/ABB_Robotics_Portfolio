@@ -22,9 +22,11 @@ jobs:
 
       - name: Run script
         id: run-script
-        run: echo "no_error=${"toto"}" >> $GITHUB_OUTPUT   
-          # output=$(python .github/scripts/check_database.py)
-          # echo "no_error=${output}" >> $GITHUB_OUTPUT
+        run: |
+          my_var="toto"
+          echo "no_error=$my_var" >> $GITHUB_OUTPUT   
+        # output=$(python .github/scripts/check_database.py)
+        # echo "no_error=${output}" >> $GITHUB_OUTPUT
       
       - name: create an issue
         if: steps.run-script.outputs.no_error == 'False'
