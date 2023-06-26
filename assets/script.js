@@ -61,7 +61,22 @@ function createEmptyChart(ctx) {
                 },
                 legend: {
                     display: false
-                }
+                },
+                zoom: {
+                    zoom: {
+                      wheel: {
+                        enabled: true,
+                      },
+                      pinch: {
+                        enabled: true
+                      },
+                      mode: 'xy',
+                    },
+                    pan: {
+                        enabled: true,
+                        mode: 'xy',
+                    }
+                  }
             }
         }
     });
@@ -155,6 +170,12 @@ function filterByController() {
             });
         });
         chart.update();
+    });
+}
+
+function resetZoom() {
+    charts.forEach(chart => {
+        chart.resetZoom();
     });
 }
 
