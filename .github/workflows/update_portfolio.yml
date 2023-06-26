@@ -24,7 +24,7 @@ jobs:
         id: run-script
         run: |
           output=$(python .github/scripts/check_database.py)
-          echo echo "Output [$output]"
+          echo "Output [$output]"
           echo "no_error=$output" >> $GITHUB_OUTPUT   
       
       - name: create an issue
@@ -38,7 +38,14 @@ jobs:
             [Run](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})
             Exception -     `${{steps.run-script.outputs.no_error}}`
 
+      - name: Today Date
+        id: today_date
+        run: |
+          date=$(date -u +"%Y-%m-%d")
+          echo $date
+          echo "date=$date" >> $GITHUB_OUTPUT
+
       - name: Git Auto Commit
         uses: stefanzweifel/git-auto-commit-action@v4.16.0
         with:
-          commit_message: "Database updated - $(date +'%Y-%m-%d %H:%M:%S')"
+          commit_message: Database updated - ${{steps.today_date.outputs.date}}
