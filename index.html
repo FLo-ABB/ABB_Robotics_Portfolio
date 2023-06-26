@@ -4,6 +4,8 @@
 <head>
     <title>Robotics portfolio</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.0/dist/chart.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom@2.0.1/dist/chartjs-plugin-zoom.min.js"></script>
     <link rel="icon" href="assets/logo/pro.png" />
     <link rel="stylesheet" href="assets/style.css">
     <meta charset="UTF-8">
@@ -59,11 +61,14 @@
                         href="https://new.abb.com/products/robotics" id="More">ABB Robotics Website</a></button></div>
         </div>
     </div>
-    <div id="Controllers_Choice">
+    <div id="Controllers_CheckBox">
         <input id="IRC5_checkbox" type="checkbox" checked="" value="IRC5" name="IRC5" onclick="filterByController(this)"><label
             for="IRC5_checkbox"> IRC5</label>
         <input id="Omnicore_checkbox" type="checkbox" checked="" value="Omnicore" name="Omnicore"
             onclick="filterByController(this)"><label for="Omnicore_checkbox"> OmniCore</label>
+    </div>
+    <div id="Chart_Tools">
+        <button id="Reset" onclick="resetZoom()">Reset View</button>
     </div>
     <div id="disclaimer">This website is not affiliated with any company or organization. Information provided is for
         general informational purposes only</div>
