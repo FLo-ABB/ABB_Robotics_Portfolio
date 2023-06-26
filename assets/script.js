@@ -7,6 +7,7 @@ const charts = [
     getRobotChart('myChartCollaborative', "Collaboratives")
 ];
 
+
 function getRobotChart(chartId, productType) {
     const actualChart = createEmptyChart(document.getElementById(chartId).getContext('2d'));
     let json_sorted = getJsonVariantSorted(myJson, "payload");
@@ -79,13 +80,15 @@ function createRobotVariantPoints(chart, robot, populationSize, index) {
             return context.dataset.data[0].random_color;
         },
         pointRadius: function (context) {
-            return context.dataset.data[0].show ? 4 : 0;
+            return context.dataset.data[0].show ? 3 : 0;
         },
         borderWidth: function (context) {
             return context.dataset.data[0].show ? 2 : 0;
-        }
+        },
+        lineTension: 0.3
     });
-    let randomColor = `hsl(${Math.floor((index / populationSize) * 180) * (index % 2) + Math.floor(180 + ((index + 1) / populationSize) * 180) * ((index + 1) % 2)},100%,60%)`;
+    let colors = generateDistinctColors(populationSize);
+    let randomColor = colors[index];
     robot.variants.forEach(variant => {
         chart.data.datasets[chart.data.datasets.length - 1].data.push({
             y: variant.reach * 1000,
@@ -161,6 +164,47 @@ function getJsonVariantSorted(json, sortBy = "payload") {
         item.variants.sort((a, b) => (a[sortProperty] - b[sortProperty]));
     });
     return json;
+}
+
+function generateDistinctColors(numColors) {
+    const colors = [];
+    const goldenRatio = 0.618033988749895;
+    let hue = 0.8;
+
+    for (let i = 0; i < numColors; i++) {
+        hue += goldenRatio;
+        hue %= 1;
+        const color = hsvToRgb(hue, 0.95, 0.95); // value mean
+        colors.push(`rgb(${color[0]}, ${color[1]}, ${color[2]})`);
+    }
+
+    return colors;
+}
+
+function hsvToRgb(h, s, v) {
+    let r, g, b;
+    const i = Math.floor(h * 6);
+    const f = h * 6 - i;
+    const p = v * (1 - s);
+    const q = v * (1 - f * s);
+    const t = v * (1 - (1 - f) * s);
+
+    switch (i % 6) {
+        case 0:
+            r = v; g = t; b = p; break;
+        case 1:
+            r = q; g = v; b = p; break;
+        case 2:
+            r = p; g = v; b = t; break;
+        case 3:
+            r = p; g = q; b = v; break;
+        case 4:
+            r = t; g = p; b = v; break;
+        case 5:
+            r = v; g = p; b = q; break;
+    }
+
+    return [Math.round(r * 255), Math.round(g * 255), Math.round(b * 255)];
 }
 
 document.getElementById("defaultOpen").click();
