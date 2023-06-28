@@ -7,6 +7,16 @@ const charts = [
     getRobotChart('myChartCollaborative', "Collaboratives")
 ];
 
+const controllers = {
+    "IRC5 Compact": "IRC5 Compact",
+    "IRC5 Panel Mounted Controller": "IRC5 PMC",
+    "IRC5 Single Cabinet": "IRC5 Single",
+    "OmniCore V250XT": "OmniCore V250XT",
+    "OmniCore C30": "OmniCore C30",
+    "OmniCore E10": "OmniCore E10",
+    "OmniCore C90XT": "OmniCore C90XT"
+};
+
 
 function getRobotChart(chartId, productType) {
     const actualChart = createEmptyChart(document.getElementById(chartId).getContext('2d'));
@@ -56,6 +66,18 @@ function createEmptyChart(ctx) {
                             document.getElementById('More').setAttribute('href', chart[0].dataset.data[chart[0].dataIndex].read_more_url);
                             document.getElementById('More').innerHTML = "Learn more...";
                             document.getElementById('color').setAttribute('style', "background-color:" + chart[0].dataset.data[chart[0].dataIndex].random_color);
+                            // in div with id supported_controllers, create for each controller a div with class controller_supported with the name of the controller in valie
+                            document.getElementById('supported_controllers').innerHTML = "";
+                            chart[0].dataset.data[chart[0].dataIndex].controller.forEach(controller => {
+                                let div = document.createElement('div');
+                                div.setAttribute('class', 'controller_supported');
+                                // use the dict controllers to get the display name
+                                div.innerHTML = controllers[controller];
+                                document.getElementById('supported_controllers').appendChild(div);
+                            }
+                            );
+
+
                         }
                     }
                 },
