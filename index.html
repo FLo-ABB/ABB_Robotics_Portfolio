@@ -15,7 +15,6 @@
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
-
         gtag('config', 'G-DJPLPJ28PH');
     </script>
 </head>
@@ -25,52 +24,55 @@
         <a class="logo" href="" rel="home" title="Robotics Portfolio" target="_self">
             <img src="assets/logo/pro.png" alt="ABB Logo" style="width: 50px; height: 50px; display: inline-block;">
         </a>
-        <div class="tab"><button class="tablinks" onclick="openTypeTab(event, 'Articulated')"
-                id="defaultOpen">Articulated</button><button class="tablinks"
-                onclick="openTypeTab(event, 'Collaborative')">Collaborative</button><button class="tablinks"
-                onclick="openTypeTab(event, 'Palletizer')">Palletizer</button><button class="tablinks"
-                onclick="openTypeTab(event, 'SCARA')">SCARA</button><button class="tablinks"
-                onclick="openTypeTab(event, 'Picker')">Picker</button><button class="tablinks"
-                onclick="openTypeTab(event, 'Paint')">Paint</button></div>
+        <div class="tab">
+            <button class="tablinks" onclick="openTypeTab(event, 'Articulated')" id="defaultOpen">Articulated</button>
+            <button class="tablinks" onclick="openTypeTab(event, 'Collaborative')">Collaborative</button>
+            <button class="tablinks" onclick="openTypeTab(event, 'Palletizer')">Palletizer</button>
+            <button class="tablinks" onclick="openTypeTab(event, 'SCARA')">SCARA</button>
+            <button class="tablinks" onclick="openTypeTab(event, 'Picker')">Picker</button>
+            <button class="tablinks" onclick="openTypeTab(event, 'Paint')">Paint</button>
+        </div>
     </header>
     <div id="container">
         <div id="Articulated" class="tabcontent">
-            <div id="chart"><canvas id="myChartArticulated"></canvas></div>
+            <div class="chart-container"><canvas id="myChartArticulated"></canvas></div>
         </div>
         <div id="SCARA" class="tabcontent">
-            <div id="chart"><canvas id="myChartSCARA"></canvas></div>
+            <div class="chart-container"><canvas id="myChartSCARA"></canvas></div>
         </div>
         <div id="Collaborative" class="tabcontent">
-            <div id="chart"><canvas id="myChartCollaborative"></canvas></div>
+            <div class="chart-container"><canvas id="myChartCollaborative"></canvas></div>
         </div>
         <div id="Palletizer" class="tabcontent">
-            <div id="chart"><canvas id="myChartPalletizer"></canvas></div>
+            <div class="chart-container"><canvas id="myChartPalletizer"></canvas></div>
         </div>
         <div id="Picker" class="tabcontent">
-            <div id="chart"><canvas id="myChartPicker"></canvas></div>
+            <div class="chart-container"><canvas id="myChartPicker"></canvas></div>
         </div>
         <div id="Paint" class="tabcontent">
-            <div id="chart"><canvas id="myChartPaint"></canvas></div>
+            <div class="chart-container"><canvas id="myChartPaint"></canvas></div>
         </div>
         <div id="infoWindow">
             <div>
                 <div id="color"></div>
                 <h2 id="IRBName"></h2>
             </div>
-            <div style="text-align: center;"><img id="image" src="assets/img/IRB8700_thumb.png" max-height="256px"
-                    alt="Industrial Robot"></div>
-            <p id="descr">Put your mouse hover the circles in the chart to interact with them !</p>
+            <div style="text-align: center;">
+                <img id="image" src="assets/img/IRB8700_thumb.png" max-height="256px" alt="Industrial Robot">
+            </div>
+            <p id="descr">Put your mouse hover the circles in the chart to interact with them!</p>
             <div id="supported_controllers"></div>
-            <button id="MoreContainer" class="More"><a href="https://new.abb.com/products/robotics" id="More">ABB
-                    Robotics Website</a></button>
+            <button id="MoreContainer" class="More"><a href="https://new.abb.com/products/robotics" id="More"
+                    target="_blank">ABB Robotics Website</a></button>
         </div>
-
     </div>
     <div id="Controllers_CheckBox">
         <input id="IRC5_checkbox" type="checkbox" checked="" value="IRC5" name="IRC5"
-            onclick="filterByController(this)"><label for="IRC5_checkbox"> IRC5</label>
+            onclick="filterByController(this)">
+        <label for="IRC5_checkbox"> IRC5</label>
         <input id="Omnicore_checkbox" type="checkbox" checked="" value="Omnicore" name="Omnicore"
-            onclick="filterByController(this)"><label for="Omnicore_checkbox"> OmniCore</label>
+            onclick="filterByController(this)">
+        <label for="Omnicore_checkbox"> OmniCore</label>
     </div>
     <div id="Chart_Tools">
         <button id="Reset" onclick="resetZoom()">Reset View</button>

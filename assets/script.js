@@ -19,12 +19,13 @@ const controllers = {
 
 
 function getRobotChart(chartId, productType) {
-    const actualChart = createEmptyChart(document.getElementById(chartId).getContext('2d'));
-    let json_sorted = getJsonVariantSorted(myJson, "payload");
-    json_sorted.items.filter(robot => ((robot.product_type === productType) && !["IRB 460", "IRB 760", "IRB 660"].includes(robot.product_name)) || (productType === "Palletizer" && ["IRB 460", "IRB 760", "IRB 660"].includes(robot.product_name)))
-        .forEach((robot, index) => {
-            createRobotVariantPoints(actualChart, robot, getNumberOfRobotsByType(productType, myJson), index);
-        });
+    const chartContext = document.getElementById(chartId).getContext('2d');
+    const actualChart = createEmptyChart(chartContext);
+    const sortedJson = getJsonVariantSorted(myJson, "payload");
+    const filteredRobots = sortedJson.items.filter(robot => ((robot.product_type === productType) && !["IRB 460", "IRB 760", "IRB 660"].includes(robot.product_name)) || (productType === "Palletizer" && ["IRB 460", "IRB 760", "IRB 660"].includes(robot.product_name)));
+    filteredRobots.forEach((robot, index) => {
+        createRobotVariantPoints(actualChart, robot, getNumberOfRobotsByType(productType, myJson), index);
+    });
     const resizedChart = getResizedChart(actualChart);
     resizedChart.update();
     return resizedChart;

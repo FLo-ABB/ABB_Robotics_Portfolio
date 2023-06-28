@@ -24,7 +24,7 @@ header {
    margin: 10px 50px;
 }
 
-#chart {
+.chart-container {
    width: 98%;
    margin: 5px;
    padding: 10px;
