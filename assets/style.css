@@ -6,17 +6,17 @@ body {
    word-spacing: normal;
    word-break: break-word;
    font-family: ABBvoice-Medium, sans-serif;
-   overflow-y:scroll;
+   overflow-y: scroll;
 }
 
 header {
    display: flex;
    box-shadow: inset 0 -1px 0 #ebebeb;
-   align-items:flex-end;
+   align-items: flex-end;
    justify-content: flex-start;
 }
 
-#title{
+#title {
    display: inline-block;
 }
 
@@ -37,6 +37,7 @@ header {
    flex-wrap: wrap;
    width: 100%;
 }
+
 .tabcontent {
    display: none;
    flex-basis: 75%;
@@ -53,6 +54,9 @@ header {
    box-shadow: 0 0 2px 0 rgb(0 0 0 / 30%);
    flex-grow: 1;
    text-align: justify;
+   display: flex;
+   flex-direction: column;
+   justify-content: flex-start;
 }
 
 .tab {
@@ -96,6 +100,10 @@ header {
 }
 
 #MoreContainer {
+   margin-top: auto;
+   margin-bottom: 20px;
+   margin-left: auto;
+   margin-right: auto;
    background-color: #ff000f;
    color: white;
    border: 0;
@@ -104,16 +112,19 @@ header {
    padding: 14px 24px;
    font-size: 16px;
    line-height: 20px;
-   height: 48px; 
+   height: 48px;
+   flex-grow: 0;
+   flex-shrink: 0;
 }
 
-a{
+a {
    text-decoration: none;
    color: white;
 }
-#MoreContainer:hover{
+
+#MoreContainer:hover {
    background-color: #bb2924;
-   cursor:pointer;
+   cursor: pointer;
 }
 
 #disclaimer {
@@ -159,4 +170,22 @@ input[type="checkbox" i] {
 #Chart_Tools {
    text-align: center;
    margin: 10px 0;
+}
+
+.controller_supported {
+   display: inline-flex;
+   height: 14px;
+   padding: 3px 7px;
+   justify-content: center;
+   align-items: center;
+   border-radius: 27px;
+   background: #FFF;
+   color: #333;
+   font-size: 10px;
+   margin: 12px 3px;
+   border: 2px solid #b4b4b4;
+}
+
+#supported_controllers {
+   text-align: center;
 }
