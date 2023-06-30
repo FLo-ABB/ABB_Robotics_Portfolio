@@ -1,5 +1,5 @@
 function openTypeTab(evt, robotType) {
-    const tabcontent = Array.from(document.getElementsByClassName("tabcontent"));
+    const tabcontent = Array.from(document.getElementsByClassName("chart-container"));
     tabcontent.forEach(tab => { tab.style.display = "none"; });
     const tablinks = Array.from(document.getElementsByClassName("tablinks"));
     tablinks.forEach(tablink => { tablink.className = tablink.className.replace(" active", ""); });

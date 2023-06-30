@@ -24,7 +24,7 @@
         <a class="logo" href="" rel="home" title="Robotics Portfolio" target="_self">
             <img src="assets/logo/pro.png" alt="ABB Logo" style="width: 50px; height: 50px; display: inline-block;">
         </a>
-        <div class="tab">
+        <div id="navigation-bar">
             <button class="tablinks" onclick="openTypeTab(event, 'Articulated')" id="defaultOpen">Articulated</button>
             <button class="tablinks" onclick="openTypeTab(event, 'Collaborative')">Collaborative</button>
             <button class="tablinks" onclick="openTypeTab(event, 'Palletizer')">Palletizer</button>
@@ -33,25 +33,25 @@
             <button class="tablinks" onclick="openTypeTab(event, 'Paint')">Paint</button>
         </div>
     </header>
-    <div id="container">
-        <div id="chartPanel">
-            <div id="Articulated" class="tabcontent">
-                <div class="chart-container"><canvas id="myChartArticulated"></canvas></div>
+    <div id="app-content">
+        <div id="chartAndToolsPanel">
+            <div id="Articulated" class="chart-container">
+                <canvas id="myChartArticulated"></canvas>
             </div>
-            <div id="SCARA" class="tabcontent">
-                <div class="chart-container"><canvas id="myChartSCARA"></canvas></div>
+            <div id="SCARA" class="chart-container">
+                <canvas id="myChartSCARA"></canvas>
             </div>
-            <div id="Collaborative" class="tabcontent">
-                <div class="chart-container"><canvas id="myChartCollaborative"></canvas></div>
+            <div id="Collaborative" class="chart-container">
+                <canvas id="myChartCollaborative"></canvas>
             </div>
-            <div id="Palletizer" class="tabcontent">
-                <div class="chart-container"><canvas id="myChartPalletizer"></canvas></div>
+            <div id="Palletizer" class="chart-container">
+                <canvas id="myChartPalletizer"></canvas>
             </div>
-            <div id="Picker" class="tabcontent">
-                <div class="chart-container"><canvas id="myChartPicker"></canvas></div>
+            <div id="Picker" class="chart-container">
+                <canvas id="myChartPicker"></canvas>
             </div>
-            <div id="Paint" class="tabcontent">
-                <div class="chart-container"><canvas id="myChartPaint"></canvas></div>
+            <div id="Paint" class="chart-container">
+                <canvas id="myChartPaint"></canvas>
             </div>
             <div id="Chart_Tools">
                 <div id="Controllers_CheckBox">
@@ -63,12 +63,12 @@
                     <label for="Omnicore_checkbox"> OmniCore</label>
                 </div>
                 <button id="Reset" onclick="resetZoom()">Reset View</button>
-                <div id="disclaimer">This website is not affiliated with any company or organization. Information provided is for
-                    general informational purposes only</div>
+                <div id="disclaimer">
+                    This website is not affiliated with any company or organization. Information provided is for general informational purposes only
+                </div>
             </div>
         </div>
-        
-        <div id="infoWindow">
+        <div id="infoPanel">
             <div>
                 <div id="color"></div>
                 <h2 id="IRBName"></h2>
@@ -82,7 +82,6 @@
                     target="_blank">ABB Robotics Website</a></button>
         </div>
     </div>
-    
     <script type="text/javascript" src="assets/inlineJson.js"></script>
     <script type="text/javascript" src="assets/colorsUtils.js"></script>
     <script type="text/javascript" src="assets/chartUtils.js"></script>
@@ -90,5 +89,4 @@
     <script type="text/javascript" src="assets/uiUtils.js"></script>
     <script type="text/javascript" src="assets/main.js"></script>
 </body>
-
 </html>
