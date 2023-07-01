@@ -71,34 +71,18 @@ header {
    }
 }
 
-/* */
-
-.chart-container {
-   width: 100%;
-   flex-grow: 1;
-   margin: 10px;
-}
-
-canvas {
-   width: 100% !important;
-   height: 100% !important;
- }
-
-#Chart_Tools {
-   text-align: center;
-   margin-top: auto;
-   margin-left: auto;
-   margin-right: auto;
-   width: 100%;
-}
+/* main app */
 
 #app-content {
    display: flex;
    flex-direction: row;
    flex-wrap: wrap;
-   width: 100%;
+   width: 100% !important;
+   height: 100% !important;
    flex-grow: 1;
 }
+
+/* elements composing the app */
 
 #infoPanel {
    flex-basis: 10%;
@@ -120,50 +104,30 @@ canvas {
    flex-direction: column;
    justify-content: flex-start;
    align-items: center;
+}
+
+/* charts */
+
+.chart-container {
+   width: 100%;
    flex-grow: 1;
+   margin: 10px;
 }
 
-#color {
-   display: inline-block;
-   width: 20px;
-   height: 20px;
-   border-radius: 50%;
-   margin: 0px 20px;
-   padding: 0px
-}
+canvas {
+   width: 100% !important;
+   height: 100% !important;
+ }
 
-#IRBName {
-   display: inline-block;
-}
-
-#MoreContainer {
+#Chart_Tools {
+   text-align: center;
    margin-top: auto;
-   margin-bottom: 20px;
    margin-left: auto;
    margin-right: auto;
-   background-color: #ff000f;
-   color: white;
-   border: 0;
-   border-radius: 24px;
-   text-decoration: none;
-   padding: 14px 24px;
-   font-size: 16px;
-   line-height: 20px;
-   height: 48px;
-   flex-grow: 0;
-   flex-shrink: 0;
+   width: 100%;
 }
 
-a {
-   text-decoration: none;
-   color: white;
-}
-
-#MoreContainer:hover {
-   background-color: #bb2924;
-   cursor: pointer;
-}
-
+/* Chart tools and disclaimer */
 #disclaimer {
    font-size: 12px;
    color: #333;
@@ -221,4 +185,47 @@ input[type="checkbox" i] {
 
 #supported_controllers {
    text-align: center;
+}
+
+/* Info Panel elements*/
+
+#color {
+   display: inline-block;
+   width: 20px;
+   height: 20px;
+   border-radius: 50%;
+   margin: 0px 20px;
+   padding: 0px
+}
+
+#IRBName {
+   display: inline-block;
+}
+
+#MoreContainer {
+   margin-top: auto;
+   margin-bottom: 20px;
+   margin-left: auto;
+   margin-right: auto;
+   background-color: #ff000f;
+   color: white;
+   border: 0;
+   border-radius: 24px;
+   text-decoration: none;
+   padding: 14px 24px;
+   font-size: 16px;
+   line-height: 20px;
+   height: 48px;
+   flex-grow: 0;
+   flex-shrink: 0;
+}
+
+a {
+   text-decoration: none;
+   color: white;
+}
+
+#MoreContainer:hover {
+   background-color: #bb2924;
+   cursor: pointer;
 }
