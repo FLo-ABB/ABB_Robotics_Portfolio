@@ -46,7 +46,8 @@ function createEmptyChart(ctx) {
                         mode: 'xy'
                     }
                 }
-            }
+            },
+            maintainAspectRatio: false
         }
     };
     return new Chart(ctx, chartOptions);

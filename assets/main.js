@@ -1,5 +1,5 @@
 const charts = [
-    //getRobotChart('myChartArticulated', "Articulated"),
+    getRobotChart('myChartArticulated', "Articulated"),
     getRobotChart('myChartPalletizer', "Palletizer"),
     getRobotChart('myChartSCARA', "SCARA"),
     getRobotChart('myChartPicker', "Parallel"),
@@ -31,4 +31,3 @@ function getRobotChart(chartId, productType) {
 }
 
 document.getElementById("defaultOpen").click();
-// window.onresize = function(){ location.reload(); }

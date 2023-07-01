@@ -27,9 +27,14 @@ header {
 
 .chart-container {
    width: 100%;
-   border: 1px solid pink;
    flex-grow: 1;
+   margin: 10px;
 }
+
+canvas {
+   width: 100% !important;
+   height: 100% !important;
+ }
 
 #Chart_Tools {
    text-align: center;
@@ -37,7 +42,6 @@ header {
    margin-left: auto;
    margin-right: auto;
    width: 100%;
-   border: 1px solid orange;
 }
 
 #app-content {
