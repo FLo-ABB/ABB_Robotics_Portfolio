@@ -33,3 +33,11 @@ function resetZoom() {
         chart.resetZoom();
     });
 }
+
+function toggleMenu() {
+    const hamburger = document.getElementById("hamburger");
+    hamburger.innerHTML = (hamburger.innerHTML === "☰") ? "✕" : "☰";
+
+    const navigationBar = document.getElementById("navigation-bar");
+    navigationBar.style.display = (navigationBar.style.display === "block") ? "none" : "block";
+}

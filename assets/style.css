@@ -10,20 +10,68 @@ body {
    height: 100vh;
 }
 
+/* header and navigation bar */
 header {
    display: flex;
    box-shadow: inset 0 -1px 0 #ebebeb;
-   align-items: flex-end;
-   justify-content: flex-start;
-}
-
-#title {
-   display: inline-block;
+   align-items: center;
+   justify-content: space-between;
 }
 
 .logo {
    margin: 10px 50px;
 }
+
+#navigation-bar {
+   overflow: hidden;
+   text-align: center;
+   margin: 0 auto;
+}
+
+#navigation-bar button {
+   background-color: inherit;
+   float: center;
+   border: none;
+   outline: none;
+   cursor: pointer;
+   padding: 25px 16px;
+   transition: 0.3s;
+   font-weight: bold;
+   font-size: 16px;
+   width: 150px
+}
+
+#navigation-bar button:hover {
+   box-shadow: inset 0 -4px 0 #ff000f;
+}
+
+#navigation-bar button.active {
+   box-shadow: inset 0 -4px 0 #ff000f;
+}
+
+#hamburger {
+   display: none;
+   background-color: inherit;
+   border: none;
+   outline: none;
+   cursor: pointer;
+   transition: 0.3s;
+   font-weight: bold;
+   font-size: 32px;
+   padding: 0px 16px;
+}
+
+@media screen and (max-width: 600px) {
+   #navigation-bar {
+       display: none;
+   }
+
+   #hamburger {
+       display: block;
+   }
+}
+
+/* */
 
 .chart-container {
    width: 100%;
@@ -73,33 +121,6 @@ canvas {
    justify-content: flex-start;
    align-items: center;
    flex-grow: 1;
-}
-
-#navigation-bar {
-   overflow: hidden;
-   text-align: center;
-   margin: 0 auto;
-}
-
-#navigation-bar button {
-   background-color: inherit;
-   float: center;
-   border: none;
-   outline: none;
-   cursor: pointer;
-   padding: 25px 16px;
-   transition: 0.3s;
-   font-weight: bold;
-   font-size: 16px;
-   width: 150px
-}
-
-#navigation-bar button:hover {
-   box-shadow: inset 0 -4px 0 #ff000f;
-}
-
-#navigation-bar button.active {
-   box-shadow: inset 0 -4px 0 #ff000f;
 }
 
 #color {
