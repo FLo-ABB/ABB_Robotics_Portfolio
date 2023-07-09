@@ -19,26 +19,29 @@ header {
 }
 
 .logo {
-   margin: 10px 50px;
+   position: absolute;
+   margin: 12px;
 }
 
 #navigation-bar {
    overflow: hidden;
    text-align: center;
    margin: 0 auto;
+   display: flex;
+   flex-direction: row;
+   height: 75px;
 }
 
 #navigation-bar button {
    background-color: inherit;
-   float: center;
    border: none;
    outline: none;
    cursor: pointer;
-   padding: 25px 16px;
    transition: 0.3s;
    font-weight: bold;
    font-size: 16px;
-   width: 150px
+   width: 150px;
+   height: 100%;
 }
 
 #navigation-bar button:hover {
@@ -59,15 +62,43 @@ header {
    font-weight: bold;
    font-size: 32px;
    padding: 0px 16px;
+   position: absolute;
+   right: 0;
+   top: 0;
+   z-index: 1;
 }
 
 @media screen and (max-width: 600px) {
-   #navigation-bar {
-       display: none;
-   }
-
    #hamburger {
        display: block;
+   }
+
+
+   #navigation-bar{
+      display: none;
+      flex-direction: column;
+      position: absolute;
+      right: 0;
+      top: 0;
+      transition: 0.5s;
+      padding-top: 45px;
+      height: auto;
+   }
+
+   .logo {
+      display: none;
+   }
+
+   #navigation-bar button:hover {
+      box-shadow: inset -4px 0 0 #ff000f;
+   }
+   
+   #navigation-bar button.active {
+      box-shadow: inset -4px 0 0 #ff000f;
+   }
+
+   #chartAndToolsPanel {
+      flex-grow: 1;
    }
 }
 
@@ -86,10 +117,7 @@ header {
 
 #infoPanel {
    flex-basis: 10%;
-   margin: 20px;
-   padding: 10px;
-   box-shadow: 0 0 2px 0 rgb(0 0 0 / 30%);
-   text-align: justify;
+   padding: 30px;
    display: flex;
    flex-direction: column;
    justify-content: flex-start;
@@ -188,18 +216,31 @@ input[type="checkbox" i] {
 }
 
 /* Info Panel elements*/
+#RobotTitle {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+
+}
 
 #color {
    display: inline-block;
-   width: 20px;
-   height: 20px;
+   width: 23px;
+   height: 23px;
    border-radius: 50%;
-   margin: 0px 20px;
+   margin-right: 20px;
    padding: 0px
 }
 
 #IRBName {
    display: inline-block;
+   font-size: 2em;
+   letter-spacing: -0.05em;
+}
+
+#descr {
+   font-size: 16px;
+   line-height: 24px;
 }
 
 #MoreContainer {
