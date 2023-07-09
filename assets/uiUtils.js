@@ -39,5 +39,5 @@ function toggleMenu() {
     hamburger.innerHTML = (hamburger.innerHTML === "☰") ? "✕" : "☰";
 
     const navigationBar = document.getElementById("navigation-bar");
-    navigationBar.style.display = (navigationBar.style.display === "block") ? "none" : "block";
+    navigationBar.style.display = (navigationBar.style.display === "flex") ? "none" : "flex";
 }
