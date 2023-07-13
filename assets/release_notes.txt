@@ -1,3 +1,12 @@
+-2023-07-13: 
+	In IRB 6710, the tittle has been updated, from 'New generation of robots' to 'Modular, high-performance large robots'
+	In IRB 6710, the read_more_url has been updated, from 'https://www.youtube.com/watch?v=_ezEDVlWUIc' to 'https://new.abb.com/products/robotics/robots/articulated-robots/irb-6710'
+	In IRB 6720, the tittle has been updated, from 'New generation of robots' to 'Modular, high-performance large robots'
+	In IRB 6720, the read_more_url has been updated, from 'https://www.youtube.com/watch?v=_ezEDVlWUIc' to 'https://new.abb.com/products/robotics/robots/articulated-robots/irb-6720'
+	In IRB 6730, the tittle has been updated, from 'New generation of robots' to 'Modular, high-performance large robots'
+	In IRB 6730, the read_more_url has been updated, from 'https://www.youtube.com/watch?v=_ezEDVlWUIc' to 'https://new.abb.com/products/robotics/robots/articulated-robots/irb-6730'
+	In IRB 6740, the tittle has been updated, from 'New generation of robots' to 'Modular, high-performance large robots'
+	In IRB 6740, the read_more_url has been updated, from 'https://www.youtube.com/watch?v=_ezEDVlWUIc' to 'https://new.abb.com/products/robotics/robots/articulated-robots/irb-6740'
 -2023-06-26: 
 	IRB 930 added
 	IRB 6740 added
