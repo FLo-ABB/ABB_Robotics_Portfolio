@@ -1,7 +1,7 @@
 name: Update Website Data
 on:
   schedule:
-    - cron: "0 17 * * *"
+    - cron: "0 17 * * 1,4"
   workflow_dispatch:
 
 jobs:
