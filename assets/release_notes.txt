@@ -1,3 +1,100 @@
+-2024-02-01: 
+	In IRB 1010, the product_thumb has been updated, from 'IRB1010_thumb.png' to 'IRB1010_thumb.jpg'
+	In IRB 1100, the product_thumb has been updated, from 'IRB1100_thumb.png' to 'IRB1100_thumb.jpg'
+	In IRB 120, the product_thumb has been updated, from 'IRB120_thumb.png' to 'IRB120_thumb.jpg'
+	In IRB 1200, the product_thumb has been updated, from 'IRB1200_thumb.png' to 'IRB1200_thumb.jpg'
+	In IRB 1300, the product_thumb has been updated, from 'IRB1300_thumb.png' to 'IRB1300_thumb.jpg'
+	In IRB 1410, the product_thumb has been updated, from 'IRB1410_thumb.png' to 'IRB1410_thumb.jpg'
+	In CRB 1100 SWIFTI™, the product_thumb has been updated, from 'CRB1100_thumb.png' to 'CRB1100_thumb.jpg'
+	In CRB 1300 SWIFTI™, the product_thumb has been updated, from 'CRB1300_thumb.png' to 'CRB1300_thumb.jpg'
+	In CRB 15000 GoFa™, the product_thumb has been updated, from 'CRB15000_thumb.png' to 'CRB15000_thumb.jpg'
+	In IRB 14000 Dual-arm YuMi®, the product_thumb has been updated, from 'IRB14000_thumb.png' to 'IRB14000_thumb.jpg'
+	In IRB 14050 Single-arm YuMi®, the product_thumb has been updated, from 'IRB14050_thumb.png' to 'IRB14050_thumb.jpg'
+	In IRB 1520ID, the product_thumb has been updated, from 'IRB1520ID_thumb.png' to 'IRB1520ID_thumb.jpg'
+	In IRB 1600, the product_thumb has been updated, from 'IRB1600_thumb.png' to 'IRB1600_thumb.jpg'
+	In IRB 1660ID, the product_thumb has been updated, from 'IRB1660ID_thumb.png' to 'IRB1660ID_thumb.jpg'
+	In IRB 2400, the product_thumb has been updated, from 'IRB2400_thumb.png' to 'IRB2400_thumb.jpg'
+	In IRB 2600, the product_thumb has been updated, from 'IRB2600_thumb.png' to 'IRB2600_thumb.jpg'
+	In IRB 2600ID, the product_thumb has been updated, from 'IRB2600ID_thumb.png' to 'IRB2600ID_thumb.jpg'
+	In IRB 360, the product_thumb has been updated, from 'IRB360_thumb.png' to 'IRB360_thumb.jpg'
+	In IRB 365, the product_thumb has been updated, from 'IRB365_thumb.png' to 'IRB365_thumb.jpg'
+	In IRB 390, the product_thumb has been updated, from 'IRB390_thumb.png' to 'IRB390_thumb.jpg'
+	In IRB 4400, the product_thumb has been updated, from 'IRB4400_thumb.png' to 'IRB4400_thumb.jpg'
+	In IRB 460, the product_thumb has been updated, from 'IRB460_thumb.png' to 'IRB460_thumb.jpg'
+	In IRB 4600, the product_thumb has been updated, from 'IRB4600_thumb.png' to 'IRB4600_thumb.jpg'
+	In IRB 52, the product_thumb has been updated, from 'IRB52_thumb.png' to 'IRB52_thumb.jpg'
+	In IRB 5350, the product_thumb has been updated, from 'IRB5350_thumb.png' to 'IRB5350_thumb.jpg'
+	In IRB 5500-23, the product_thumb has been updated, from 'IRB5500-23_thumb.png' to 'IRB5500-23_thumb.jpg'
+	In IRB 5500-27, the product_thumb has been updated, from 'IRB5500-27_thumb.png' to 'IRB5500-27_thumb.jpg'
+	In IRB 5510, the product_thumb has been updated, from 'IRB5510_thumb.png' to 'IRB5510_thumb.jpg'
+	In IRB 5710, the product_thumb has been updated, from 'IRB5710_thumb.png' to 'IRB5710_thumb.jpg'
+	In IRB 5720, the product_thumb has been updated, from 'IRB5720_thumb.png' to 'IRB5720_thumb.jpg'
+	In IRB 660, the product_thumb has been updated, from 'IRB660_thumb.png' to 'IRB660_thumb.jpg'
+	In IRB 6620, the product_thumb has been updated, from 'IRB6620_thumb.png' to 'IRB6620_thumb.jpg'
+	In IRB 6640, the product_thumb has been updated, from 'IRB6640_thumb.png' to 'IRB6640_thumb.jpg'
+	In IRB 6650S, the product_thumb has been updated, from 'IRB6650S_thumb.png' to 'IRB6650S_thumb.jpg'
+	In IRB 6660, the product_thumb has been updated, from 'IRB6660_thumb.png' to 'IRB6660_thumb.jpg'
+	In IRB 6700, the product_thumb has been updated, from 'IRB6700_thumb.png' to 'IRB6700_thumb.jpg'
+	In IRB 6710, the product_thumb has been updated, from 'IRB6710_thumb.png' to 'IRB6710_thumb.jpg'
+	In IRB 6720, the product_thumb has been updated, from 'IRB6720_thumb.png' to 'IRB6720_thumb.jpg'
+	In IRB 6730, the product_thumb has been updated, from 'IRB6730_thumb.png' to 'IRB6730_thumb.jpg'
+	In IRB 6740, the product_thumb has been updated, from 'IRB6740_thumb.png' to 'IRB6740_thumb.jpg'
+	In IRB 6790, the product_thumb has been updated, from 'IRB6790_thumb.png' to 'IRB6790_thumb.jpg'
+	In IRB 760, the product_thumb has been updated, from 'IRB760_thumb.png' to 'IRB760_thumb.jpg'
+	In IRB 7600, the product_thumb has been updated, from 'IRB7600_thumb.png' to 'IRB7600_thumb.jpg'
+	In IRB 8700, the product_thumb has been updated, from 'IRB8700_thumb.png' to 'IRB8700_thumb.jpg'
+	In IRB 910SC, the product_thumb has been updated, from 'IRB910SC_thumb.png' to 'IRB910SC_thumb.jpg'
+	In IRB 910INV, the product_thumb has been updated, from 'IRB910INV_thumb.png' to 'IRB910INV_thumb.jpg'
+	In IRB 920T, the product_thumb has been updated, from 'IRB920T_thumb.png' to 'IRB920T_thumb.jpg'
+	In IRB 930, the product_thumb has been updated, from 'IRB930_thumb.png' to 'IRB930_thumb.jpg'
+	Added IRB5500-23_thumb.jpg to img folder
+	Added IRB1520ID_thumb.jpg to img folder
+	Added IRB4600_thumb.jpg to img folder
+	Added IRB6730_thumb.jpg to img folder
+	Added IRB660_thumb.jpg to img folder
+	Added IRB390_thumb.jpg to img folder
+	Added IRB910SC_thumb.jpg to img folder
+	Added IRB6740_thumb.jpg to img folder
+	Added IRB910INV_thumb.jpg to img folder
+	Added IRB365_thumb.jpg to img folder
+	Added IRB6790_thumb.jpg to img folder
+	Added IRB1410_thumb.jpg to img folder
+	Added IRB7600_thumb.jpg to img folder
+	Added IRB5510_thumb.jpg to img folder
+	Added CRB1100_thumb.jpg to img folder
+	Added IRB6710_thumb.jpg to img folder
+	Added IRB1010_thumb.jpg to img folder
+	Added IRB1660ID_thumb.jpg to img folder
+	Added IRB6620_thumb.jpg to img folder
+	Added IRB5500-27_thumb.jpg to img folder
+	Added IRB1600_thumb.jpg to img folder
+	Added IRB5720_thumb.jpg to img folder
+	Added IRB8700_thumb.jpg to img folder
+	Added CRB15000_thumb.jpg to img folder
+	Added IRB5350_thumb.jpg to img folder
+	Added IRB6660_thumb.jpg to img folder
+	Added CRB1300_thumb.jpg to img folder
+	Added IRB4400_thumb.jpg to img folder
+	Added IRB920T_thumb.jpg to img folder
+	Added IRB6700_thumb.jpg to img folder
+	Added IRB360_thumb.jpg to img folder
+	Added IRB6720_thumb.jpg to img folder
+	Added IRB2600_thumb.jpg to img folder
+	Added IRB930_thumb.jpg to img folder
+	Added IRB2600ID_thumb.jpg to img folder
+	Added IRB6650S_thumb.jpg to img folder
+	Added IRB1300_thumb.jpg to img folder
+	Added IRB52_thumb.jpg to img folder
+	Added IRB460_thumb.jpg to img folder
+	Added IRB2400_thumb.jpg to img folder
+	Added IRB14050_thumb.jpg to img folder
+	Added IRB5710_thumb.jpg to img folder
+	Added IRB1100_thumb.jpg to img folder
+	Added IRB6640_thumb.jpg to img folder
+	Added IRB120_thumb.jpg to img folder
+	Added IRB1200_thumb.jpg to img folder
+	Added IRB14000_thumb.jpg to img folder
+	Added IRB760_thumb.jpg to img folder
 -2023-07-13: 
 	In IRB 6710, the tittle has been updated, from 'New generation of robots' to 'Modular, high-performance large robots'
 	In IRB 6710, the read_more_url has been updated, from 'https://www.youtube.com/watch?v=_ezEDVlWUIc' to 'https://new.abb.com/products/robotics/robots/articulated-robots/irb-6710'
