@@ -1,3 +1,66 @@
+-2024-05-06: 
+	IRB 7720 added
+	IRB 7710 added
+	In CRB 1100 SWIFTI™, the read_more_url has been updated, from 'https://new.abb.com/products/robotics/collaborative-robots/crb-1100' to 'https://new.abb.com/products/robotics/robots/collaborative-robots/swifti/crb-1100-swifti'
+	In CRB 1300 SWIFTI™, the read_more_url has been updated, from 'https://new.abb.com/products/robotics/robots/collaborative-robots/crb-1300-swifti' to 'https://new.abb.com/products/robotics/robots/collaborative-robots/swifti/crb-1300-swifti'
+	In CRB 15000 GoFa™, the read_more_url has been updated, from 'https://new.abb.com/products/robotics/collaborative-robots/crb-15000' to 'https://new.abb.com/products/robotics/robots/collaborative-robots/crb-15000'
+	In IRB 14000 Dual-arm YuMi®, the read_more_url has been updated, from 'https://new.abb.com/products/robotics/industrial-robots/irb-14000-yumi' to 'https://new.abb.com/products/robotics/robots/collaborative-robots/yumi/dual-arm'
+	In IRB 14050 Single-arm YuMi®, the read_more_url has been updated, from 'https://new.abb.com/products/robotics/industrial-robots/irb-14050-single-arm-yumi' to 'https://new.abb.com/products/robotics/robots/collaborative-robots/yumi/single-arm'
+	In IRB 365, the read_more_url has been updated, from 'https://new.abb.com/products/robotics/industrial-robots/irb-365' to 'https://new.abb.com/products/robotics/robots/delta-robots/irb-365'
+	In IRB 390, the read_more_url has been updated, from 'https://new.abb.com/products/robotics/industrial-robots/irb-390' to 'https://new.abb.com/products/robotics/robots/delta-robots/irb-390'
+	In IRB 760, the read_more_url has been updated, from 'https://new.abb.com/products/robotics/industrial-robots/irb-760' to 'https://new.abb.com/products/robotics/robots/articulated-robots/irb-760'
+	In IRB 7600, the read_more_url has been updated, from 'https://new.abb.com/products/robotics/industrial-robots/irb-7600' to 'https://new.abb.com/products/robotics/robots/articulated-robots/irb-7600'
+	In IRB 8700, the read_more_url has been updated, from 'https://new.abb.com/products/robotics/industrial-robots/irb-8700' to 'https://new.abb.com/products/robotics/robots/articulated-robots/irb-8700'
+	Updated IRB6650S_thumb.jpg in img folder
+	Updated IRB910SC_thumb.jpg in img folder
+	Updated IRB5500-23_thumb.jpg in img folder
+	Updated IRB5720_thumb.jpg in img folder
+	Updated IRB660_thumb.jpg in img folder
+	Updated IRB6720_thumb.jpg in img folder
+	Updated IRB7600_thumb.jpg in img folder
+	Updated IRB1660ID_thumb.jpg in img folder
+	Updated IRB1410_thumb.jpg in img folder
+	Updated IRB5500-27_thumb.jpg in img folder
+	Updated IRB5350_thumb.jpg in img folder
+	Updated IRB6620_thumb.jpg in img folder
+	Updated IRB6700_thumb.jpg in img folder
+	Updated CRB15000_thumb.jpg in img folder
+	Updated IRB5710_thumb.jpg in img folder
+	Updated IRB360_thumb.jpg in img folder
+	Updated IRB2600ID_thumb.jpg in img folder
+	Updated IRB390_thumb.jpg in img folder
+	Updated IRB930_thumb.jpg in img folder
+	Added IRB7720_thumb.jpg to img folder
+	Updated IRB920T_thumb.jpg in img folder
+	Updated IRB14050_thumb.jpg in img folder
+	Added IRB7710_thumb.jpg to img folder
+	Updated IRB6710_thumb.jpg in img folder
+	Updated IRB1100_thumb.jpg in img folder
+	Updated IRB6730_thumb.jpg in img folder
+	Updated IRB6640_thumb.jpg in img folder
+	Updated IRB1300_thumb.jpg in img folder
+	Updated IRB4400_thumb.jpg in img folder
+	Updated IRB910INV_thumb.jpg in img folder
+	Updated IRB6740_thumb.jpg in img folder
+	Updated IRB760_thumb.jpg in img folder
+	Updated IRB5510_thumb.jpg in img folder
+	Updated IRB6790_thumb.jpg in img folder
+	Updated IRB120_thumb.jpg in img folder
+	Updated IRB1010_thumb.jpg in img folder
+	Updated IRB1520ID_thumb.jpg in img folder
+	Updated IRB1600_thumb.jpg in img folder
+	Updated IRB52_thumb.jpg in img folder
+	Updated IRB2400_thumb.jpg in img folder
+	Updated IRB460_thumb.jpg in img folder
+	Updated IRB2600_thumb.jpg in img folder
+	Updated IRB1200_thumb.jpg in img folder
+	Updated IRB4600_thumb.jpg in img folder
+	Updated IRB365_thumb.jpg in img folder
+	Updated CRB1100_thumb.jpg in img folder
+	Updated CRB1300_thumb.jpg in img folder
+	Updated IRB8700_thumb.jpg in img folder
+	Updated IRB14000_thumb.jpg in img folder
+	Updated IRB6660_thumb.jpg in img folder
 -2024-02-01: 
 	In IRB 1010, the product_thumb has been updated, from 'IRB1010_thumb.png' to 'IRB1010_thumb.jpg'
 	In IRB 1100, the product_thumb has been updated, from 'IRB1100_thumb.png' to 'IRB1100_thumb.jpg'
