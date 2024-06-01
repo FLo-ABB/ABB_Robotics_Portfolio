@@ -24,6 +24,7 @@ function getRobotChart(chartId, productType) {
     const filteredRobots = sortedJson.items.filter(robot => ((robot.product_type === productType) && !["IRB 460", "IRB 760", "IRB 660"].includes(robot.product_name)) || (productType === "Palletizer" && ["IRB 460", "IRB 760", "IRB 660"].includes(robot.product_name)));
     filteredRobots.forEach((robot, index) => {
         createRobotPoints(actualChart, robot, getNumberOfRobotsByType(productType, myJson), index);
+        addRobotInSecretTools(robot);
     });
     const resizedChart = getResizedChart(actualChart);
     resizedChart.update();

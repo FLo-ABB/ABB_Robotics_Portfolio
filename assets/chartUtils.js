@@ -17,7 +17,7 @@ function createEmptyChart(ctx) {
                     type: 'logarithmic',
                     title: {
                         display: true,
-                        text: 'Reach (mm)'
+                        text: 'Reach (m)'
                     }
                 }
             },
@@ -103,7 +103,7 @@ function createRobotPoints(chart, robot, populationSize, index) {
     let randomColor = colors[index];
     robot.variants.forEach(variant => {
         chart.data.datasets[chart.data.datasets.length - 1].data.push({
-            y: variant.reach * 1000,
+            y: variant.reach,
             x: variant.capacity,
             name: variant.name,
             product_thumb: robot.product_thumb,
@@ -111,7 +111,8 @@ function createRobotPoints(chart, robot, populationSize, index) {
             read_more_url: robot.read_more_url,
             random_color: randomColor,
             controller: robot.controller,
-            show: true
+            product_name: robot.product_name,
+            show: localStorage.getItem(robot.product_name) !== null ? localStorage.getItem(robot.product_name) === "true" : true
         });
     });
 }
