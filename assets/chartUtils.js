@@ -111,7 +111,8 @@ function createRobotPoints(chart, robot, populationSize, index) {
             read_more_url: robot.read_more_url,
             random_color: randomColor,
             controller: robot.controller,
-            show: true
+            product_name: robot.product_name,
+            show: localStorage.getItem(robot.product_name) !== null ? localStorage.getItem(robot.product_name) === "true" : true
         });
     });
 }

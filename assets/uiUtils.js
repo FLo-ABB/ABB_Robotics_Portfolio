@@ -41,3 +41,17 @@ function toggleMenu() {
     const navigationBar = document.getElementById("navigation-bar");
     navigationBar.style.display = (navigationBar.style.display === "flex") ? "none" : "flex";
 }
+
+function toggleRobot(robot) {
+    charts.forEach(chart => {
+        chart.data.datasets.forEach(dataset => {
+            dataset.data.forEach(data => {
+                console.log(data, robot.value);
+                if (data.product_name === robot.value) {
+                    data.show = robot.checked;
+                }
+            });
+        });
+        chart.update();
+    });
+}

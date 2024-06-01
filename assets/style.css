@@ -70,11 +70,11 @@ header {
 
 @media screen and (max-width: 600px) {
    #hamburger {
-       display: block;
+      display: block;
    }
 
 
-   #navigation-bar{
+   #navigation-bar {
       display: none;
       flex-direction: column;
       position: absolute;
@@ -92,7 +92,7 @@ header {
    #navigation-bar button:hover {
       box-shadow: inset -4px 0 0 #ff000f;
    }
-   
+
    #navigation-bar button.active {
       box-shadow: inset -4px 0 0 #ff000f;
    }
@@ -145,7 +145,7 @@ header {
 canvas {
    width: 100% !important;
    height: 100% !important;
- }
+}
 
 #Chart_Tools {
    text-align: center;
@@ -269,4 +269,8 @@ a {
 #MoreContainer:hover {
    background-color: #bb2924;
    cursor: pointer;
+}
+
+#secret-tools {
+   display: none;
 }
