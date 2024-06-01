@@ -10,14 +10,14 @@ function createEmptyChart(ctx) {
                     type: 'logarithmic',
                     title: {
                         display: true,
-                        text: 'Payload (kg)'
+                        text: 'Reach (m)'
                     }
                 },
                 y: {
                     type: 'logarithmic',
                     title: {
                         display: true,
-                        text: 'Reach (m)'
+                        text: 'Payload (kg)'
                     }
                 }
             },
@@ -103,8 +103,8 @@ function createRobotPoints(chart, robot, populationSize, index) {
     let randomColor = colors[index];
     robot.variants.forEach(variant => {
         chart.data.datasets[chart.data.datasets.length - 1].data.push({
-            y: variant.reach,
-            x: variant.capacity,
+            x: variant.reach,
+            y: variant.capacity,
             name: variant.name,
             product_thumb: robot.product_thumb,
             description: robot.description,
@@ -124,15 +124,15 @@ function getResizedChart(chart) {
     let maxPayload = -Infinity;
     chart.data.datasets.forEach(dataset => {
         dataset.data.forEach(data => {
-            minReach = Math.min(minReach, data.y * 0.9);
-            minPayload = Math.min(minPayload, data.x * 0.9);
-            maxReach = Math.max(maxReach, data.y * 1.2);
-            maxPayload = Math.max(maxPayload, data.x * 1.2);
+            minReach = Math.min(minReach, data.x * 0.9);
+            minPayload = Math.min(minPayload, data.y * 0.9);
+            maxReach = Math.max(maxReach, data.x * 1.2);
+            maxPayload = Math.max(maxPayload, data.y * 1.2);
         });
     });
-    chart.options.scales.y.min = minReach;
-    chart.options.scales.x.min = minPayload;
-    chart.options.scales.y.max = maxReach;
-    chart.options.scales.x.max = maxPayload;
+    chart.options.scales.x.min = minReach;
+    chart.options.scales.y.min = minPayload;
+    chart.options.scales.x.max = maxReach;
+    chart.options.scales.y.max = maxPayload;
     return chart;
 }
