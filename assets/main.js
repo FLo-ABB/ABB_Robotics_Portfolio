@@ -14,7 +14,8 @@ const controllers = {
     "OmniCore V250XT": "OmniCore V250XT",
     "OmniCore C30": "OmniCore C30",
     "OmniCore E10": "OmniCore E10",
-    "OmniCore C90XT": "OmniCore C90XT"
+    "OmniCore C90XT": "OmniCore C90XT",
+    "OmniCore V400XT": "OmniCore V400XT"
 };
 
 function getRobotChart(chartId, productType) {
