@@ -27,6 +27,13 @@ function getRobotChart(chartId, productType) {
         createRobotPoints(actualChart, robot, getNumberOfRobotsByType(productType, myJson), index);
         addRobotInSecretTools(robot);
     });
+    document.getElementById('selectAll').addEventListener('change', function () {
+        const checkboxes = document.querySelectorAll('#secret-tools input[type="checkbox"]');
+        checkboxes.forEach(checkbox => {
+            checkbox.checked = this.checked;
+            localStorage.setItem(checkbox.name, this.checked);
+        });
+    });
     const resizedChart = getResizedChart(actualChart);
     resizedChart.update();
     return resizedChart;
