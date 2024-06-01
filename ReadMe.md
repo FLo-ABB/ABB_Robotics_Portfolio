@@ -1,4 +1,4 @@
-# [ABB Robots Website](https://flo-abb.github.io/ABB_Robotics_Portfolio/)
+# [🔗 ABB Robots Website](https://flo-abb.github.io/ABB_Robotics_Portfolio/)
 This website provides information and charts about ABB industrial robots, including their reach and payload sort by type. The goal is to give a comprehensive overview of the ABB Robotics Portfolio.
 
 # Features
