@@ -124,6 +124,7 @@ function getResizedChart(chart) {
     let maxPayload = -Infinity;
     chart.data.datasets.forEach(dataset => {
         dataset.data.forEach(data => {
+            if (data.show === false) return;
             minReach = Math.min(minReach, data.x * 0.9);
             minPayload = Math.min(minPayload, data.y * 0.9);
             maxReach = Math.max(maxReach, data.x * 1.2);
