@@ -1,3 +1,51 @@
+-2024-07-04: 
+	IRB 1090 added
+	IRB 6640 deleted
+	IRB 120 deleted
+	IRB 1410 deleted
+	IRB 910SC deleted
+	In IRB 1010, the controller has been updated, from '['OmniCore E10']' to '['OmniCore™️ E10', 'OmniCore™️ C30']'
+	In IRB 1100, the controller has been updated, from '['OmniCore C30', 'OmniCore C90XT', 'OmniCore E10']' to '['OmniCore™️ C30', 'OmniCore™️ C90XT', 'OmniCore™️ E10']'
+	In IRB 1200, the controller has been updated, from '['IRC5 Compact', 'IRC5 Panel Mounted Controller', 'IRC5 Single Cabinet', 'OmniCore C30', 'OmniCore C90XT', 'OmniCore E10']' to '['IRC5 Compact', 'IRC5 Panel Mounted Controller', 'IRC5 Single Cabinet', 'OmniCore™️ C30', 'OmniCore™️ C90XT', 'OmniCore™️ E10']'
+	In IRB 1200's family, the variant 'IRB 1200-7/0.9' has been added
+	In IRB 1300, the controller has been updated, from '['OmniCore C30', 'OmniCore C90XT', 'OmniCore E10']' to '['OmniCore™️ C30', 'OmniCore™️ C90XT', 'OmniCore™️ E10', 'OmniCore™️ V250XT', 'OmniCore™️ V400XT']'
+	In CRB 1100 SWIFTI™, the controller has been updated, from '['OmniCore C30']' to '['OmniCore™️ C30']'
+	In CRB 1300 SWIFTI™, the controller has been updated, from '['OmniCore C30']' to '['OmniCore™️ C30']'
+	In CRB 15000 GoFa™, the controller has been updated, from '['OmniCore C30']' to '['OmniCore™️ C30']'
+	In IRB 14050 Single-arm YuMi®, the controller has been updated, from '['OmniCore C30']' to '['OmniCore™️ C30']'
+	In IRB 1600, the controller has been updated, from '['IRC5 Compact', 'IRC5 Panel Mounted Controller', 'IRC5 Single Cabinet']' to '['IRC5 Compact', 'IRC5 Panel Mounted Controller', 'IRC5 Single Cabinet', 'OmniCore™️ C30', 'OmniCore™️ V250XT', 'OmniCore™️ V400XT']'
+	In IRB 2600, the controller has been updated, from '['IRC5 Panel Mounted Controller', 'IRC5 Single Cabinet', 'OmniCore V250XT']' to '['IRC5 Panel Mounted Controller', 'IRC5 Single Cabinet', 'OmniCore™️ V250XT', 'OmniCore™️ V400XT']'
+	In IRB 2600ID, the controller has been updated, from '['IRC5 Single Cabinet', 'OmniCore V250XT']' to '['IRC5 Single Cabinet', 'OmniCore™️ V250XT']'
+	In IRB 360, the controller has been updated, from '['IRC5 Compact', 'IRC5 Panel Mounted Controller', 'IRC5 Single Cabinet', 'OmniCore C30']' to '['IRC5 Compact', 'IRC5 Panel Mounted Controller', 'IRC5 Single Cabinet', 'OmniCore™️ C30']'
+	In IRB 365, the controller has been updated, from '['OmniCore C30']' to '['OmniCore™️ C30']'
+	In IRB 390, the controller has been updated, from '['IRC5 Panel Mounted Controller', 'IRC5 Single Cabinet']' to '['IRC5 Panel Mounted Controller', 'IRC5 Single Cabinet', 'OmniCore™️ V250XT', 'OmniCore™️ V400XT']'
+	In IRB 4400, the controller has been updated, from '['IRC5 Panel Mounted Controller', 'IRC5 Single Cabinet']' to '['IRC5 Panel Mounted Controller', 'IRC5 Single Cabinet', 'OmniCore™️ V250XT', 'OmniCore™️ V400XT']'
+	In IRB 460, the controller has been updated, from '['IRC5 Panel Mounted Controller', 'IRC5 Single Cabinet', 'OmniCore V250XT']' to '['IRC5 Panel Mounted Controller', 'IRC5 Single Cabinet', 'OmniCore™️ V250XT', 'OmniCore™️ V400XT']'
+	In IRB 4600, the controller has been updated, from '['IRC5 Panel Mounted Controller', 'IRC5 Single Cabinet', 'OmniCore V250XT']' to '['IRC5 Panel Mounted Controller', 'IRC5 Single Cabinet', 'OmniCore™️ V250XT', 'OmniCore™️ V400XT']'
+	In IRB 5710, the controller has been updated, from '['OmniCore V250XT']' to '['OmniCore™️ V250XT', 'OmniCore™️ V400XT']'
+	In IRB 5720, the controller has been updated, from '['OmniCore V250XT']' to '['OmniCore™️ V250XT', 'OmniCore™️ V400XT']'
+	In IRB 660, the controller has been updated, from '['IRC5 Panel Mounted Controller', 'IRC5 Single Cabinet', 'OmniCore V250XT']' to '['IRC5 Panel Mounted Controller', 'IRC5 Single Cabinet', 'OmniCore™️ V250XT', 'OmniCore™️ V400XT']'
+	In IRB 6650S, the controller has been updated, from '['IRC5 Panel Mounted Controller', 'IRC5 Single Cabinet', 'OmniCore V250XT']' to '['IRC5 Panel Mounted Controller', 'IRC5 Single Cabinet', 'OmniCore™️ V250XT']'
+	In IRB 6660, the controller has been updated, from '['IRC5 Panel Mounted Controller', 'IRC5 Single Cabinet']' to '['IRC5 Panel Mounted Controller', 'IRC5 Single Cabinet', 'OmniCore™️ V250XT', 'OmniCore™️ V400XT']'
+	In IRB 6700, the controller has been updated, from '['IRC5 Panel Mounted Controller', 'IRC5 Single Cabinet', 'OmniCore V250XT']' to '['IRC5 Panel Mounted Controller', 'IRC5 Single Cabinet', 'OmniCore™️ V250XT', 'OmniCore™️ V400XT']'
+	In IRB 6710, the controller has been updated, from '['OmniCore V250XT']' to '['OmniCore™️ V250XT', 'OmniCore™️ V400XT']'
+	In IRB 6720, the controller has been updated, from '['OmniCore V250XT']' to '['OmniCore™️ V250XT', 'OmniCore™️ V400XT']'
+	In IRB 6730, the controller has been updated, from '['OmniCore V250XT']' to '['OmniCore™️ V250XT', 'OmniCore™️ V400XT']'
+	In IRB 6740, the controller has been updated, from '['OmniCore V250XT']' to '['OmniCore™️ V250XT', 'OmniCore™️ V400XT']'
+	In IRB 6790, the controller has been updated, from '['IRC5 Panel Mounted Controller', 'IRC5 Single Cabinet']' to '['IRC5 Panel Mounted Controller', 'IRC5 Single Cabinet', 'OmniCore™️ V250XT', 'OmniCore™️ V400XT']'
+	In IRB 760, the controller has been updated, from '['IRC5 Panel Mounted Controller', 'IRC5 Single Cabinet']' to '['IRC5 Panel Mounted Controller', 'IRC5 Single Cabinet', 'OmniCore™️ V400XT']'
+	In IRB 7600, the controller has been updated, from '['IRC5 Panel Mounted Controller', 'IRC5 Single Cabinet']' to '['IRC5 Panel Mounted Controller', 'IRC5 Single Cabinet', 'OmniCore™️ V400XT']'
+	In IRB 7710, the controller has been updated, from '['OmniCore V400XT']' to '['OmniCore™️ V400XT']'
+	In IRB 7720, the controller has been updated, from '['OmniCore V400XT']' to '['OmniCore™️ V400XT']'
+	In IRB 8700, the controller has been updated, from '['IRC5 Single Cabinet']' to '['IRC5 Single Cabinet', 'OmniCore™️ V400XT']'
+	In IRB 910INV, the controller has been updated, from '['OmniCore C30', 'OmniCore C90XT', 'OmniCore E10']' to '['OmniCore™️ C30', 'OmniCore™️ C90XT', 'OmniCore™️ E10']'
+	In IRB 920T, the controller has been updated, from '['OmniCore C30', 'OmniCore C90XT', 'OmniCore E10']' to '['OmniCore™️ C30', 'OmniCore™️ C90XT', 'OmniCore™️ E10']'
+	In IRB 930, the controller has been updated, from '['OmniCore C30', 'OmniCore C90XT']' to '['OmniCore™️ C30', 'OmniCore™️ C90XT', 'OmniCore™️ E10']'
+	Updated IRB6740_thumb.jpg in img folder
+	Added IRB1090_thumb.jpg to img folder
+	Updated IRB6730_thumb.jpg in img folder
+	Updated IRB6710_thumb.jpg in img folder
+	Updated IRB6720_thumb.jpg in img folder
 -2024-05-06: 
 	IRB 7720 added
 	IRB 7710 added
