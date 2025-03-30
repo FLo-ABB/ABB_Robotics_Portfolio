@@ -11,11 +11,11 @@ const controllers = {
     "IRC5 Compact": "IRC5 Compact",
     "IRC5 Panel Mounted Controller": "IRC5 PMC",
     "IRC5 Single Cabinet": "IRC5 Single",
-    "OmniCore V250XT": "OmniCore V250XT",
-    "OmniCore C30": "OmniCore C30",
-    "OmniCore E10": "OmniCore E10",
-    "OmniCore C90XT": "OmniCore C90XT",
-    "OmniCore V400XT": "OmniCore V400XT"
+    "OmniCore\u2122\ufe0f V250XT": "OmniCore V250XT",
+    "OmniCore\u2122\ufe0f C30": "OmniCore C30",
+    "OmniCore\u2122\ufe0f E10": "OmniCore E10",
+    "OmniCore\u2122\ufe0f C90XT": "OmniCore C90XT",
+    "OmniCore\u2122\ufe0f V400XT": "OmniCore V400XT"
 };
 
 function getRobotChart(chartId, productType) {
