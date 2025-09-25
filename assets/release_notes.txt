@@ -1,3 +1,8 @@
+-2025-09-25: 
+	IRB 1200 Gen2 added
+	IRB 6750S added
+	Added IRB1200Gen2_thumb.jpg to img folder
+	Added IRB6750S_thumb.jpg to img folder
 -2024-07-04: 
 	IRB 1090 added
 	IRB 6640 deleted
